@@ -2,7 +2,7 @@
 #python hls_burn_scars_tdml.py
 """
 Complete TDML Generator for HLS Burn Scars Dataset
-Reads .gitattributes file to discover all actual files and generates comprehensive TDML metadata
+Reads .gitattributes file to discover all actual files and generates comprehensive TDML Metadata
 """
 
 import os

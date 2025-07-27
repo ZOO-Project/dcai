@@ -478,7 +478,7 @@ def main():
     """Main function to demonstrate complete conversion."""
     
     # Load the NASA UMM-G JSON
-    with open('nasa_ummg.json', 'r') as f:
+    with open('nasa_ummg_h.json', 'r') as f:
         ummg_data = json.load(f)
     
     # Convert to complete GeoCroissant
@@ -490,7 +490,7 @@ def main():
         json.dump(complete_geocroissant_data, f, indent=2)
     
     print("Complete conversion completed!")
-    print(f"Input: nasa_ummg.json")
+    print(f"Input: nasa_ummg_h.json")
     print(f"Output: geocroissant_output.json")
     
     # Print comprehensive statistics

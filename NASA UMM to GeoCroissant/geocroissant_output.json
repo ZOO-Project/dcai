@@ -1,0 +1,486 @@
+{
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "cr": "http://mlcommons.org/croissant/",
+    "geocr": "http://mlcommons.org/croissant/geocr/",
+    "dct": "http://purl.org/dc/terms/"
+  },
+  "@type": "https://schema.org/Dataset",
+  "@id": "HLS_Sentinel2_Dataset",
+  "https://schema.org/name": "HLS_Sentinel2_Satellite_Imagery_Dataset",
+  "https://schema.org/description": "Complete HLS Sentinel-2 satellite imagery dataset with all metadata preserved",
+  "https://schema.org/datePublished": "2023-06-15T06:04:43.667Z",
+  "https://schema.org/version": "2.0",
+  "https://schema.org/license": "https://creativecommons.org/licenses/by/4.0/",
+  "https://schema.org/citation": "HLS Sentinel-2 Satellite Imagery Dataset, NASA Earthdata, 2023",
+  "cr:recordSet": [
+    {
+      "@type": "geocr:SatelliteImagery",
+      "@id": "G2711472078-LPCLOUD",
+      "name": "HLS.S30.T55JGM.2015332T001732.v2.0",
+      "description": "HLS Sentinel-2 Multi-spectral Instrument Surface Reflectance Daily Global 30m v2.0",
+      "dct:temporal": "2023-06-15T06:04:43.667Z",
+      "geocr:Geometry": "POLYGON((148.98645834 -25.31770273, 148.98873086 -25.31090165, 148.99038533 -25.3027548, 148.98621543 -25.30281105, 148.98645834 -25.31770273))",
+      "geocr:BoundingBox": {
+        "west": 148.98621543,
+        "south": -25.31770273,
+        "east": 148.99038533,
+        "north": -25.3027548
+      },
+      "geocr:spatialResolution": {
+        "geocr:value": 30.0,
+        "geocr:unit": "meters"
+      },
+      "geocr:temporalExtent": {
+        "geocr:start": "2015-11-28T00:17:27.450Z",
+        "geocr:end": "2015-11-28T00:17:27.450Z"
+      },
+      "geocr:observatory": "Sentinel-2A",
+      "geocr:instrument": "Sentinel-2 MSI",
+      "geocr:satelliteImagery": {
+        "@type": "geocr:SatelliteImageryMetadata",
+        "geocr:spectralBands": [
+          "B01",
+          "B02",
+          "B03",
+          "B04",
+          "B05",
+          "B06",
+          "B07",
+          "B08",
+          "B8A",
+          "B09",
+          "B10",
+          "B11",
+          "B12"
+        ],
+        "geocr:imageryType": "multispectral",
+        "geocr:atmosphericCorrection": "LaSRC v3.2.0",
+        "geocr:acquisitionCondition": "Day",
+        "geocr:rasterData": {
+          "geocr:format": "GeoTIFF",
+          "geocr:dataType": "surface reflectance"
+        }
+      },
+      "geocr:bandCalibration": {
+        "@type": "geocr:BandCalibration",
+        "geocr:bands": {
+          "B01": {
+            "geocr:slope": 0.9959,
+            "geocr:offset": -0.0002,
+            "geocr:wavelength": "443nm",
+            "geocr:description": "Coastal aerosol"
+          },
+          "B02": {
+            "geocr:slope": 0.9778,
+            "geocr:offset": -0.004,
+            "geocr:wavelength": "490nm",
+            "geocr:description": "Blue"
+          },
+          "B03": {
+            "geocr:slope": 1.0053,
+            "geocr:offset": -0.0009,
+            "geocr:wavelength": "560nm",
+            "geocr:description": "Green"
+          },
+          "B04": {
+            "geocr:slope": 0.9765,
+            "geocr:offset": 0.0009,
+            "geocr:wavelength": "665nm",
+            "geocr:description": "Red"
+          },
+          "B11": {
+            "geocr:slope": 0.9987,
+            "geocr:offset": -0.0011,
+            "geocr:wavelength": "1610nm",
+            "geocr:description": "SWIR 1"
+          },
+          "B12": {
+            "geocr:slope": 1.003,
+            "geocr:offset": -0.0012,
+            "geocr:wavelength": "2190nm",
+            "geocr:description": "SWIR 2"
+          }
+        }
+      },
+      "geocr:dataScaling": {
+        "@type": "geocr:DataScaling",
+        "geocr:addOffset": 0.0,
+        "geocr:refScaleFactor": 0.0001,
+        "geocr:angScaleFactor": 0.01,
+        "geocr:fillValue": -9999.0,
+        "geocr:qaFillValue": 255.0
+      },
+      "geocr:administrativeMetadata": {
+        "@type": "geocr:AdministrativeMetadata",
+        "geocr:conceptType": "granule",
+        "geocr:revisionId": 1,
+        "geocr:nativeId": "HLS.S30.T55JGM.2015332T001732.v2.0",
+        "geocr:collectionConceptId": "C2021957295-LPCLOUD",
+        "geocr:providerId": "LPCLOUD",
+        "geocr:metadataFormat": "application/echo10+xml"
+      },
+      "geocr:productInformation": {
+        "@type": "geocr:ProductInformation",
+        "geocr:productUri": "S2A_MSIL1C_20151128T001732_N0204_R116_T55JGM_20151128T001727.SAFE",
+        "geocr:mgrsTileId": "55JGM",
+        "geocr:spatialCoverage": 0.0
+      },
+      "geocr:qualityAssessment": {
+        "@type": "geocr:QualityAssessment",
+        "geocr:geometricAccuracy": {
+          "geocr:xShift": 0.0,
+          "geocr:yShift": 0.0,
+          "geocr:rmse": 0.0,
+          "geocr:ncp": 0,
+          "geocr:referenceImage": "NONE"
+        },
+        "geocr:cloudCoverage": {
+          "geocr:value": 100.0,
+          "geocr:unit": "percentage"
+        }
+      },
+      "geocr:enhancedTemporalInformation": {
+        "@type": "geocr:EnhancedTemporalInformation",
+        "geocr:sensingTime": "2015-11-28T00:17:27.456Z",
+        "geocr:processingTime": "2023-06-15T06:03:38Z",
+        "geocr:productionDateTime": "2023-06-15T06:03:38.000Z"
+      },
+      "geocr:enhancedSpatialInformation": {
+        "@type": "geocr:EnhancedSpatialInformation",
+        "geocr:coordinateSystem": {
+          "geocr:epsgCode": "EPSG:32755",
+          "geocr:projectionName": "WGS84 / UTM zone 55S"
+        },
+        "geocr:rasterDimensions": {
+          "geocr:columns": 3660,
+          "geocr:rows": 3660,
+          "geocr:upperLeftX": 699960.0,
+          "geocr:upperLeftY": -2799960.0
+        }
+      },
+      "geocr:citationInformation": {
+        "@type": "geocr:CitationInformation",
+        "geocr:doi": "10.5067/HLS/HLSS30.002",
+        "geocr:doiAuthority": "https://doi.org",
+        "geocr:doiUrl": "https://doi.org/10.5067/HLS/HLSS30.002"
+      },
+      "geocr:viewingGeometry": {
+        "@type": "geocr:ViewingGeometry",
+        "geocr:meanSunAzimuthAngle": 83.01522549,
+        "geocr:meanSunZenithAngle": 20.56099496,
+        "geocr:meanViewAzimuthAngle": 291.51000977,
+        "geocr:meanViewZenithAngle": 11.97999954,
+        "geocr:nbarSolarZenith": 24.14364084
+      },
+      "geocr:processingMetadata": {
+        "@type": "geocr:ProcessingMetadata",
+        "geocr:processingBaseline": "02.04",
+        "geocr:spatialResamplingAlgorithm": "Area Weighted Average"
+      },
+      "distribution": [
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B08.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B08.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B08.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.Fmask.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.Fmask.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.Fmask.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B11.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B11.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B11.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.VZA.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.VZA.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.VZA.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B02.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B02.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B02.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.SAA.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.SAA.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.SAA.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B03.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B03.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B03.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B06.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B06.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B06.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.VAA.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.VAA.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.VAA.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.SZA.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.SZA.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.SZA.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B07.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B07.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B07.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B8A.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B8A.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B8A.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B01.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B01.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B01.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B10.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B10.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B10.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B04.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B04.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B04.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B12.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B12.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B12.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B09.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B09.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B09.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B05.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "HTTPS",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.B05.tif"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.B05.tif",
+          "sc:encodingFormat": "image/tiff",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-public/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0_stac.json",
+          "sc:encodingFormat": "application/json",
+          "geocr:accessMethod": "STAC_METADATA",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0_stac.json"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-public/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0_stac.json",
+          "sc:encodingFormat": "application/json",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.cmr.xml",
+          "sc:encodingFormat": "application/xml",
+          "geocr:accessMethod": "CMR_METADATA",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.cmr.xml"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-protected/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.cmr.xml",
+          "sc:encodingFormat": "application/xml",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/s3credentials",
+          "sc:encodingFormat": "application/octet-stream",
+          "geocr:accessMethod": "METADATA",
+          "sc:description": "api endpoint to retrieve temporary credentials valid for same-region direct s3 access"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-public/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.jpg",
+          "sc:encodingFormat": "image/jpeg",
+          "geocr:accessMethod": "PREVIEW_IMAGE",
+          "sc:description": "Download HLS.S30.T55JGM.2015332T001732.v2.0.jpg"
+        },
+        {
+          "@type": "cr:Distribution",
+          "sc:contentUrl": "s3://lp-prod-public/HLSS30.020/HLS.S30.T55JGM.2015332T001732.v2.0/HLS.S30.T55JGM.2015332T001732.v2.0.jpg",
+          "sc:encodingFormat": "image/jpeg",
+          "geocr:accessMethod": "S3_DIRECT",
+          "sc:description": "This link provides direct download access via S3 to the granule"
+        }
+      ]
+    }
+  ]
+}

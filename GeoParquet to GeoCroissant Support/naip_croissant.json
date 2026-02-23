@@ -55,7 +55,7 @@
   "description": "NAIP dataset accessed via STAC and converted to GeoParquet.",
   "url": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/naip",
   "citeAs": "@dataset{naip, title={naip GeoParquet dataset}}",
-  "datePublished": "2026-02-24",
+  "datePublished": "2026-02-23",
   "version": "1.0",
   "license": "https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/",
   "conformsTo": [
@@ -78,8 +78,8 @@
       "name": "naip.parquet",
       "description": "GeoParquet representation of naip STAC items",
       "contentUrl": "./naip.parquet",
-      "encodingFormat": "application/vnd.apache.parquet",
-      "sha256": "188c439706c6d69a31f4857f72fec3f1753031fc72565b7d9c950c990db538fd"
+      "encodingFormat": "application/x-parquet",
+      "sha256": "951f081aa09fc063b2fb7790122c96efe4c857b6bdf0746889d6cc2731477284"
     }
   ],
   "recordSet": [
@@ -128,7 +128,10 @@
               "@id": "naip.parquet"
             },
             "extract": {
-              "column": "assets.image.href"
+              "column": "assets"
+            },
+            "transform": {
+              "jsonPath": "$.image.href"
             }
           },
           "geocr:bandConfiguration": {
@@ -198,7 +201,10 @@
               "@id": "naip.parquet"
             },
             "extract": {
-              "column": "assets.thumbnail.href"
+              "column": "assets"
+            },
+            "transform": {
+              "jsonPath": "$.thumbnail.href"
             }
           }
         },

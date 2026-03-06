@@ -1,0 +1,100 @@
+project:
+  type: book
+  output-dir: ../docs
+
+book:
+  title: "GeoCroissant Recipes"
+  author:
+    - "GeoCroissant Working Group"
+    - "croissant-geo@mlcommons.org"
+  date: "Jan 20, 2026"
+  search: true
+  repo-url: https://github.com/ZOO-Project/dcai
+  page-navigation: true
+  sidebar:
+   search: true
+   logo: "../asset/GeoCroissant.jpg"
+  page-footer:
+    left: "GeoCroissant Recipes"
+    center: "License: CC BY-ND 4.0"
+    right:
+      - icon: github
+        href: https://github.com/ZOO-Project/dcai
+
+  chapters:
+    - index.qmd
+    - part: "**Introduction**"
+      chapters:
+        - text: "Overview of GeoCroissant"
+          file: geocroissant_overview.md
+        - text: "Introduction to GeoCroissant"
+          file: "Introduction to Geocroissant/Introduction to Geocroissant.ipynb"
+    - part: "**Specification**"
+      chapters:
+        - text: "Background & Motivation"
+          file: spec-background.qmd
+        - text: "Property Reference"
+          file: spec-properties.qmd
+        - text: "Use Cases"
+          file: spec-usecases.qmd
+        - text: "Appendices"
+          file: spec-appendix.qmd
+    - part: "**Catalog to GeoCroissant**"
+      chapters:
+        - text: "STAC to GeoCroissant"
+          file: "STAC to GeoCroissant/stac_to_geocroissant.ipynb"
+        - text: "NASA UMM-G to GeoCroissant"
+          file: "NASA-UMM to GeoCroissant/NASA_UMM-G_to_GeoCroissant_Conversion.ipynb"
+        - text: "CEDA CMIP6 to GeoCroissant"
+          file: "CEDA UK to GeoCroissant Support/CEDA_UK to GeoCrossiant.ipynb"
+        - text: "Google Earth Engine to GeoCroissant"
+          file: "GEE to GeoCroissant/GEE to GeoCroissant.ipynb"
+    - part: "**Data Format to GeoCroissant**"
+      chapters:
+        - text: "GeoParquet to GeoCroissant"
+          file: "GeoParquet to GeoCroissant Support/GeoParquet to GeoCroissant Support.ipynb"
+        - text: "HDF5 to GeoCroissant"
+          file: "HDF5 Support GeoCroissant/HDF5 to Geocroissant.ipynb"
+        - text: "NetCDF to GeoCroissant"
+          file: "Solar Dynamics Observatory (NetCDF) to GeoCroissant/SDO-Geocroissant_NetCDF.ipynb"
+        - text: "Zarr Datacube to GeoCroissant"
+          file: "Zarr-Datacube to GeoCroissant/Datacube(Zarr) to GeoCroissant.ipynb"
+    - part: "**GeoCroissant Extensions**"
+      chapters:
+        - text: "Time-Series Support"
+          file: "GeoCroissant Time-Series Support/geocr_time-series.ipynb"
+        - text: "OGC-TDML to GeoCroissant"
+          file: "OGC-TDML to GeoCroissant Support/ogc-tdml to geocr/ogc-tdml to geocr_conversion.ipynb"
+        - text: "GeoCroissant to OGC-TDML"
+          file: "OGC-TDML to GeoCroissant Support/geocr to ogc-tdml/geocr-to-ogc_tdm_conversion.ipynb"
+    - part: "**GeoCroissant to Standards**"
+      chapters:
+        - text: "GeoCroissant to STAC"
+          file: "GeoCroissant to STAC/conversion-notebook.ipynb"
+        - text: "GeoCroissant to GeoDCAT"
+          file: "GeoCroissant to GeoDCAT/conversion-geodcat-notebook.ipynb"
+    - references.qmd
+
+execute:
+  eval: false
+  enabled: false
+  timeout: 300
+  error: false
+  warning: false
+  echo: true
+  output: true
+  freeze: false
+  cache: false
+  
+format:
+  html:
+    number-sections: false
+    theme:
+      - cosmo
+    css: custom.css
+    code-tools: false
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    highlight-style: github
+    code-overflow: wrap
+    df-print: paged

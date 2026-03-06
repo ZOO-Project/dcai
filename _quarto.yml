@@ -13,7 +13,7 @@ book:
   page-navigation: true
   sidebar:
    search: true
-   logo: "../asset/GeoCroissant.jpg"
+   logo: "asset/GeoCroissant.jpg"
   page-footer:
     left: "GeoCroissant Recipes"
     center: "License: CC BY-ND 4.0"
@@ -98,4 +98,3 @@ format:
     highlight-style: github
     code-overflow: wrap
     df-print: paged
-

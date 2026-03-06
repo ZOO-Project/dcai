@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: ../docs
+  output-dir: _book
 
 book:
   title: "GeoCroissant Recipes"
@@ -98,3 +98,4 @@ format:
     highlight-style: github
     code-overflow: wrap
     df-print: paged
+

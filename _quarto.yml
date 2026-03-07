@@ -5,7 +5,8 @@ project:
 book:
   title: "GeoCroissant Recipes"
   author:
-    - "GeoCroissant Working Group"
+    - "Croissant & GeoCroissant Working Group"
+    - "croissant@mlcommons.org"
     - "croissant-geo@mlcommons.org"
   date: "Jan 20, 2026"
   search: true

@@ -19,47 +19,7 @@ pip install -e .[geo]
 
 ---
 
-## Appendix B: User Adoption Survey {#appendix-b-user-adoption-survey}
-
-As part of the GeoCroissant specification process, a user study was conducted to understand which metadata fields practitioners consider most important for spatial machine learning and GeoAI workflows.
-
-### Rating Scale
-
-| Score | Meaning |
-|---|---|
-| 5 | Very important |
-| 4 | Important |
-| 3 | Neither important nor unimportant |
-| 2 | Unimportant |
-| 1 | Very unimportant |
-
-### Summary of Responses
-
-Most spatial ML metadata fields received an average rating of "Important." No fields were rated "Very unimportant."
-
-Across both spatial and non-spatial categories, **description** was consistently ranked as the most important field. Respondents noted that a good description provides the essential context needed to interpret and responsibly use a dataset — covering provenance, background, assumptions, and limitations.
-
-### Top-Ranked Fields
-
-| Rank | Top ML Metadata Fields | Top Geospatial Metadata Fields |
-|---|---|---|
-| 1 | Description | Description |
-| 2 | License | Sensor (e.g., optical, thermal) |
-| 3 | Distribution (file format) | Annotation type (e.g., mask, bbox) |
-| 4 | Name | Distribution (file format) |
-| 5 | URL | Model category (e.g., classification) |
-
-### Key Takeaways
-
-ML respondents prioritised core reuse and access metadata — especially **license** and **distribution** format, followed by **name** and **URL**.
-
-Geospatial respondents emphasised GeoAI-critical context, ranking **description**, **sensor type**, and **annotation type** highest.
-
-Overall, users most value metadata that clarifies dataset usability, legal reuse, and the geospatial and labelling characteristics needed to reliably integrate datasets into spatial ML workflows.
-
----
-
-## Appendix C: GeoSPARQL Query Examples {#appendix-c-geosparql-query-examples}
+## Appendix B: GeoSPARQL Query Examples {#appendix-c-geosparql-query-examples}
 
 The following SPARQL queries illustrate how GeoCroissant metadata exposed as RDF can be queried using GeoSPARQL predicates.
 

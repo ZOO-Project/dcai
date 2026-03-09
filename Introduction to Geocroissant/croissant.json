@@ -6,19 +6,23 @@
     "column": "cr:column",
     "conformsTo": "dct:conformsTo",
     "cr": "http://mlcommons.org/croissant/",
+    "geocr": "http://mlcommons.org/croissant/geo/",
     "rai": "http://mlcommons.org/croissant/RAI/",
+    "dct": "http://purl.org/dc/terms/",
+    "sc": "https://schema.org/",
     "data": {
       "@id": "cr:data",
       "@type": "@json"
     },
-    "dataType": {
-      "@id": "cr:dataType",
-      "@type": "@vocab"
-    },
-    "dct": "http://purl.org/dc/terms/",
     "examples": {
       "@id": "cr:examples",
       "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
     },
     "extract": "cr:extract",
     "field": "cr:field",
@@ -33,12 +37,13 @@
     "md5": "cr:md5",
     "parentField": "cr:parentField",
     "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
     "recordSet": "cr:recordSet",
     "references": "cr:references",
     "regex": "cr:regex",
     "repeated": "cr:repeated",
     "replace": "cr:replace",
-    "sc": "https://schema.org/",
+    "samplingRate": "cr:samplingRate",
     "separator": "cr:separator",
     "source": "cr:source",
     "subField": "cr:subField",
@@ -46,9 +51,35 @@
   },
   "@type": "sc:Dataset",
   "name": "hls_burn_scars",
-  "description": "This dataset contains Harmonized Landsat and Sentinel-2 imagery of burn scars and the associated masks for the years 2018-2021 over the contiguous United States. There are 804 512x512 scenes. Its primary purpose is for training geospatial machine learning models.",
-  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "description": "Geospatial dataset extracted from local hls_burn_scars directory containing Harmonized Landsat and Sentinel-2 imagery of burn scars and the associated masks.",
+  "url": "file://./hls_burn_scars",
+  "citeAs": "@dataset{hls_burn_scars, title={hls_burn_scars geospatial dataset}, year={2026}, url={file://./hls_burn_scars}}",
+  "datePublished": "2026-02-16",
+  "version": "1.0",
+  "license": "Unknown",
+  "conformsTo": [
+    "http://mlcommons.org/croissant/1.1",
+    "http://mlcommons.org/croissant/geo/1.0"
+  ],
+  "identifier": "10.57967/hf/0956",
+  "alternateName": [
+    "ibm-nasa-geospatial/hls_burn_scars"
+  ],
+  "creator": {
+    "@type": "Organization",
+    "name": "IBM-NASA Prithvi Models Family",
+    "url": "https://huggingface.co/ibm-nasa-geospatial"
+  },
   "keywords": [
+    "hls_burn_scars",
+    "HLS",
+    "burn scars",
+    "fire",
+    "remote sensing",
+    "satellite imagery",
+    "Landsat",
+    "Sentinel-2",
+    "geospatial",
     "English",
     "cc-by-4.0",
     "1K - 10K",
@@ -58,106 +89,194 @@
     "doi:10.57967/hf/0956",
     "\ud83c\uddfa\ud83c\uddf8 Region: US"
   ],
-  "license": "https://choosealicense.com/licenses/cc-by-4.0/",
-  "url": "https://huggingface.co/datasets/ibm-nasa-geospatial/hls_burn_scars",
+  "temporalCoverage": "2018-01-01/2021-12-31",
+  "geocr:temporalResolution": {
+    "@type": "QuantitativeValue",
+    "value": 8,
+    "unitText": "weeks"
+  },
+  "geocr:coordinateReferenceSystem": "EPSG:32610",
+  "spatialCoverage": {
+    "@type": "Place",
+    "geo": {
+      "@type": "GeoShape",
+      "box": "32.0 -125.0 42.0 -114.0"
+    }
+  },
+  "geocr:spatialResolution": {
+    "@type": "QuantitativeValue",
+    "value": 30.0,
+    "unitText": "m"
+  },
+  "geocr:samplingStrategy": "Subsetted to 512x512 pixel windows covering burn scar areas",
+  "geocr:spectralBandMetadata": [
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Blue",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 490,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 65,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Green",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 560,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 60,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Red",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 665,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 30,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "NIR",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 865,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 30,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "SWIR1",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 1610,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 90,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "SWIR2",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 2200,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 180,
+        "unitText": "nm"
+      }
+    }
+  ],
   "distribution": [
     {
       "@type": "cr:FileObject",
-      "@id": "repo",
-      "name": "repo",
-      "description": "The Hugging Face git repository.",
-      "contentUrl": "https://huggingface.co/datasets/ibm-nasa-geospatial/hls_burn_scars/resolve/main/hls_burn_scars.tar.gz",
-      "encodingFormat": "git+https",
-      "sha256": "https://github.com/mlcommons/croissant/issues/80"
+      "@id": "data_repo",
+      "name": "data_repo",
+      "description": "Directory containing the dataset files",
+      "contentUrl": "./hls_burn_scars",
+      "encodingFormat": "local_directory",
+      "md5": "placeholder_hash_for_directory"
     },
     {
       "@type": "cr:FileSet",
-      "@id": "parquet-files-for-config-hls_burn_scars",
-      "name": "parquet-files-for-config-hls_burn_scars",
-      "description": "The underlying Parquet files as converted by Hugging Face (see: https://huggingface.co/docs/dataset-viewer/parquet).",
+      "@id": "tiff-files",
+      "name": "tiff-files",
+      "description": "All TIFF files (images and masks).",
       "containedIn": {
-        "@id": "repo"
+        "@id": "data_repo"
       },
-      "encodingFormat": "application/x-parquet",
-      "includes": "hls_burn_scars/*/*.parquet"
+      "encodingFormat": "image/tiff",
+      "includes": "**/*.tif"
     }
   ],
   "recordSet": [
     {
       "@type": "cr:RecordSet",
-      "@id": "hls_burn_scars_splits",
-      "name": "hls_burn_scars_splits",
-      "description": "Splits for the hls_burn_scars config.",
-      "field": [
-        {
-          "@type": "cr:Field",
-          "@id": "hls_burn_scars_splits/split_name",
-          "name": "split_name",
-          "description": "The name of the split.",
-          "dataType": "sc:Text"
-        }
-      ],
-      "data": [
-        {
-          "hls_burn_scars_splits/split_name": "train"
-        },
-        {
-          "hls_burn_scars_splits/split_name": "validation"
-        },
-        {
-          "hls_burn_scars_splits/split_name": "test"
-        }
-      ]
-    },
-    {
-      "@type": "cr:RecordSet",
       "@id": "hls_burn_scars",
       "name": "hls_burn_scars",
-      "description": "ibm-nasa-geospatial/hls_burn_scars - 'hls_burn_scars' subset\n\nAdditional information:\n- 3 splits: train, validation, test",
+      "description": "hls_burn_scars dataset with satellite imagery and mask annotations.",
       "field": [
-        {
-          "@type": "cr:Field",
-          "@id": "hls_burn_scars/split",
-          "name": "hls_burn_scars/split",
-          "description": "Split to which the example belongs.",
-          "dataType": "sc:Text",
-          "source": {
-            "fileSet": {
-              "@id": "parquet-files-for-config-hls_burn_scars"
-            },
-            "extract": {
-              "column": "split"
-            }
-          }
-        },
         {
           "@type": "cr:Field",
           "@id": "hls_burn_scars/image",
           "name": "hls_burn_scars/image",
-          "description": "Image column 'image' from the Hugging Face parquet file.",
-          "dataType": "sc:ImageObject",
+          "description": "File path to satellite imagery with multiple spectral bands converted to reflectance.",
+          "dataType": "sc:Text",
           "source": {
             "fileSet": {
-              "@id": "parquet-files-for-config-hls_burn_scars"
+              "@id": "tiff-files"
             },
             "extract": {
-              "column": "image"
+              "fileProperty": "fullpath"
+            },
+            "transform": {
+              "regex": ".*_merged\\.tif$"
             }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 6,
+            "geocr:bandNameList": [
+              "Blue",
+              "Green",
+              "Red",
+              "NIR",
+              "SWIR1",
+              "SWIR2"
+            ]
           }
         },
         {
           "@type": "cr:Field",
-          "@id": "hls_burn_scars/annotation",
-          "name": "hls_burn_scars/annotation",
-          "description": "Image column 'annotation' from the Hugging Face parquet file.",
-          "dataType": "sc:ImageObject",
+          "@id": "hls_burn_scars/mask",
+          "name": "hls_burn_scars/mask",
+          "description": "File path to mask annotations with values representing different classes.",
+          "dataType": "sc:Text",
           "source": {
             "fileSet": {
-              "@id": "parquet-files-for-config-hls_burn_scars"
+              "@id": "tiff-files"
             },
             "extract": {
-              "column": "annotation"
+              "fileProperty": "fullpath"
+            },
+            "transform": {
+              "regex": ".*\\.mask\\.tif$"
             }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNameList": [
+              "mask"
+            ]
           }
         }
       ]

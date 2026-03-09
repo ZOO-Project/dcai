@@ -1,204 +1,309 @@
 [
   {
-    "@id": "https://10.57967/hf/0956/distribution/repo/checksum",
+    "@id": "https://example.org/NASA%20POWER%20T2M%202020/spatial",
     "@type": [
-      "http://spdx.org/rdf/terms#Checksum"
+      "http://purl.org/dc/terms/Location"
     ],
-    "http://spdx.org/rdf/terms#algorithm": [
+    "http://www.opengis.net/ont/geosparql#asWKT": [
       {
-        "@value": "SHA256"
-      }
-    ],
-    "http://spdx.org/rdf/terms#checksumValue": [
-      {
-        "@value": "https://github.com/mlcommons/croissant/issues/80"
+        "@type": "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "@value": "POLYGON((-180.0 -90.0, 179.375 -90.0, 179.375 90.0, -180.0 90.0, -180.0 -90.0))"
       }
     ]
   },
   {
-    "@id": "https://10.57967/hf/0956",
+    "@id": "https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/longitude",
     "@type": [
-      "http://www.w3.org/ns/dcat#Dataset",
-      "https://schema.org/Dataset"
+      "http://mlcommons.org/croissant/geo/Field"
     ],
-    "http://purl.org/dc/terms/conformsTo": [
+    "http://mlcommons.org/croissant/geo/dataType": [
       {
-        "@id": "http://mlcommons.org/croissant/1.0"
-      }
-    ],
-    "http://purl.org/dc/terms/creator": [
-      {
-        "@id": "https://huggingface.co/ibm-nasa-geospatial"
+        "@value": "sc:Float"
       }
     ],
     "http://purl.org/dc/terms/description": [
       {
-        "@value": "This dataset contains Harmonized Landsat and Sentinel-2 imagery of burn scars and the associated masks for the years 2018-2021 over the contiguous United States. There are 804 512x512 scenes. Its primary purpose is for training geospatial machine learning models."
-      }
-    ],
-    "http://purl.org/dc/terms/identifier": [
-      {
-        "@value": "10.57967/hf/0956"
-      }
-    ],
-    "http://purl.org/dc/terms/license": [
-      {
-        "@id": "https://choosealicense.com/licenses/cc-by-4.0/"
-      }
-    ],
-    "http://purl.org/dc/terms/spatial": [
-      {
-        "@id": "http://sws.geonames.org/6252001/"
-      }
-    ],
-    "http://purl.org/dc/terms/temporal": [
-      {
-        "@id": "https://10.57967/hf/0956/period"
+        "@value": "Longitude coordinate"
       }
     ],
     "http://purl.org/dc/terms/title": [
       {
-        "@value": "hls_burn_scars"
-      }
-    ],
-    "http://www.w3.org/ns/dcat#distribution": [
-      {
-        "@id": "https://10.57967/hf/0956/distribution/repo"
-      },
-      {
-        "@id": "https://10.57967/hf/0956/distribution/parquet-files-for-config-hls_burn_scars"
-      }
-    ],
-    "http://www.w3.org/ns/dcat#keyword": [
-      {
-        "@value": "English"
-      },
-      {
-        "@value": "cc-by-4.0"
-      },
-      {
-        "@value": "1K - 10K"
-      },
-      {
-        "@value": "Image"
-      },
-      {
-        "@value": "Datasets"
-      },
-      {
-        "@value": "Croissant"
-      },
-      {
-        "@value": "doi:10.57967/hf/0956"
-      },
-      {
-        "@value": "🇺🇸 Region: US"
-      }
-    ],
-    "http://www.w3.org/ns/dcat#landingPage": [
-      {
-        "@id": "https://huggingface.co/datasets/ibm-nasa-geospatial/hls_burn_scars"
-      }
-    ],
-    "https://schema.org/alternateName": [
-      {
-        "@value": "ibm-nasa-geospatial/hls_burn_scars"
+        "@value": "longitude"
       }
     ]
   },
   {
-    "@id": "https://10.57967/hf/0956/distribution/parquet-files-for-config-hls_burn_scars",
+    "@id": "https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/time",
     "@type": [
-      "http://www.w3.org/ns/dcat#Distribution"
+      "http://mlcommons.org/croissant/geo/Field"
+    ],
+    "http://mlcommons.org/croissant/geo/dataType": [
+      {
+        "@value": "sc:Text"
+      }
     ],
     "http://purl.org/dc/terms/description": [
       {
-        "@value": "The underlying Parquet files as converted by Hugging Face (see: https://huggingface.co/docs/dataset-viewer/parquet)."
-      }
-    ],
-    "http://purl.org/dc/terms/isPartOf": [
-      {
-        "@id": "https://10.57967/hf/0956/distribution/repo"
+        "@value": "Time coordinate"
       }
     ],
     "http://purl.org/dc/terms/title": [
       {
-        "@value": "parquet-files-for-config-hls_burn_scars"
-      }
-    ],
-    "http://www.w3.org/ns/dcat#accessURL": [
-      {
-        "@id": "https://example.org/data"
-      }
-    ],
-    "http://www.w3.org/ns/dcat#mediaType": [
-      {
-        "@value": "application/x-parquet"
-      }
-    ],
-    "https://schema.org/hasPart": [
-      {
-        "@value": "hls_burn_scars/*/*.parquet"
+        "@value": "time"
       }
     ]
   },
   {
-    "@id": "https://huggingface.co/ibm-nasa-geospatial",
+    "@id": "https://example.org/NASA%20POWER%20T2M%202020/temporal",
     "@type": [
-      "http://xmlns.com/foaf/0.1/Agent"
-    ],
-    "http://xmlns.com/foaf/0.1/name": [
-      {
-        "@value": "IBM-NASA Prithvi Models Family"
-      }
-    ]
-  },
-  {
-    "@id": "https://10.57967/hf/0956/distribution/repo",
-    "@type": [
-      "http://www.w3.org/ns/dcat#Distribution"
-    ],
-    "http://purl.org/dc/terms/description": [
-      {
-        "@value": "The Hugging Face git repository."
-      }
-    ],
-    "http://purl.org/dc/terms/title": [
-      {
-        "@value": "repo"
-      }
-    ],
-    "http://spdx.org/rdf/terms#checksum": [
-      {
-        "@id": "https://10.57967/hf/0956/distribution/repo/checksum"
-      }
-    ],
-    "http://www.w3.org/ns/dcat#accessURL": [
-      {
-        "@id": "https://huggingface.co/datasets/ibm-nasa-geospatial/hls_burn_scars/tree/refs%2Fconvert%2Fparquet"
-      }
-    ],
-    "http://www.w3.org/ns/dcat#mediaType": [
-      {
-        "@value": "git+https"
-      }
-    ]
-  },
-  {
-    "@id": "https://10.57967/hf/0956/period",
-    "@type": [
-      "http://www.w3.org/ns/dcat#PeriodOfTime"
+      "http://purl.org/dc/terms/PeriodOfTime"
     ],
     "http://www.w3.org/ns/dcat#endDate": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#date",
-        "@value": "2021-12-31"
+        "@value": "2020-12-31"
       }
     ],
     "http://www.w3.org/ns/dcat#startDate": [
       {
         "@type": "http://www.w3.org/2001/XMLSchema#date",
-        "@value": "2018-01-01"
+        "@value": "2020-01-01"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/T2M",
+    "@type": [
+      "http://mlcommons.org/croissant/geo/Field"
+    ],
+    "http://mlcommons.org/croissant/geo/dataType": [
+      {
+        "@value": "sc:Float"
+      }
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@value": "Temperature at 2 Meters"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "T2M"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/latitude",
+    "@type": [
+      "http://mlcommons.org/croissant/geo/Field"
+    ],
+    "http://mlcommons.org/croissant/geo/dataType": [
+      {
+        "@value": "sc:Float"
+      }
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@value": "Latitude coordinate"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "latitude"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data",
+    "@type": [
+      "http://mlcommons.org/croissant/geo/RecordSet"
+    ],
+    "http://mlcommons.org/croissant/geo/field": [
+      {
+        "@id": "https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/T2M"
+      },
+      {
+        "@id": "https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/latitude"
+      },
+      {
+        "@id": "https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/longitude"
+      },
+      {
+        "@id": "https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/time"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "t2m_data"
+      }
+    ]
+  },
+  {
+    "@id": "https://example.org/NASA%20POWER%20T2M%202020",
+    "@type": [
+      "http://www.w3.org/ns/dcat#Dataset",
+      "https://schema.org/Dataset"
+    ],
+    "http://mlcommons.org/croissant/geo/coordinateReferenceSystem": [
+      {
+        "@id": "http://www.opengis.net/def/crs/EPSG:4326"
+      }
+    ],
+    "http://mlcommons.org/croissant/geo/recordSet": [
+      {
+        "@id": "https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data"
+      }
+    ],
+    "http://mlcommons.org/croissant/geo/spatialResolution": [
+      {
+        "@id": "_:N42d54b121e2640f99f08b1b2c8e217d7"
+      }
+    ],
+    "http://mlcommons.org/croissant/geo/temporalResolution": [
+      {
+        "@id": "_:N8869c3a37bb94f9eaa99cc326ab27cc0"
+      }
+    ],
+    "http://purl.org/dc/terms/conformsTo": [
+      {
+        "@id": "http://mlcommons.org/croissant/1.1"
+      },
+      {
+        "@id": "http://mlcommons.org/croissant/geo/1.0"
+      }
+    ],
+    "http://purl.org/dc/terms/description": [
+      {
+        "@value": "Temperature at 2 Meters monthly data for 2020"
+      }
+    ],
+    "http://purl.org/dc/terms/issued": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2020-01-01"
+      }
+    ],
+    "http://purl.org/dc/terms/license": [
+      {
+        "@id": "CC-BY-4.0"
+      }
+    ],
+    "http://purl.org/dc/terms/spatial": [
+      {
+        "@id": "https://example.org/NASA%20POWER%20T2M%202020/spatial"
+      }
+    ],
+    "http://purl.org/dc/terms/temporal": [
+      {
+        "@id": "https://example.org/NASA%20POWER%20T2M%202020/temporal"
+      }
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "NASA POWER T2M 2020"
+      }
+    ],
+    "http://www.w3.org/ns/adms#version": [
+      {
+        "@value": "1.0.0"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#distribution": [
+      {
+        "@id": "https://example.org/NASA%20POWER%20T2M%202020/distribution/zarr-data"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#keyword": [
+      {
+        "@value": "temperature"
+      },
+      {
+        "@value": "climate"
+      },
+      {
+        "@value": "nasa power"
+      },
+      {
+        "@value": "t2m"
+      },
+      {
+        "@value": "2020"
+      }
+    ]
+  },
+  {
+    "@id": "_:N42d54b121e2640f99f08b1b2c8e217d7",
+    "@type": [
+      "https://schema.org/QuantitativeValue"
+    ],
+    "https://schema.org/unitText": [
+      {
+        "@value": "degrees"
+      }
+    ],
+    "https://schema.org/value": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#double",
+        "@value": 0.5
+      }
+    ]
+  },
+  {
+    "@id": "_:N8869c3a37bb94f9eaa99cc326ab27cc0",
+    "@type": [
+      "https://schema.org/QuantitativeValue"
+    ],
+    "https://schema.org/unitText": [
+      {
+        "@value": "month"
+      }
+    ],
+    "https://schema.org/value": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#integer",
+        "@value": 1
+      }
+    ]
+  },
+  {
+    "@id": "https://example.org/NASA%20POWER%20T2M%202020/distribution/zarr-data",
+    "@type": [
+      "http://www.w3.org/ns/dcat#Distribution"
+    ],
+    "http://purl.org/dc/terms/title": [
+      {
+        "@value": "zarr-data"
+      }
+    ],
+    "http://spdx.org/rdf/terms#checksum": [
+      {
+        "@id": "_:N7ef45e14da0f4e64aa48b329e73dd23f"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#accessURL": [
+      {
+        "@id": "https://nasa-power.s3.us-west-2.amazonaws.com/merra2/temporal/power_merra2_monthly_temporal_utc.zarr/"
+      }
+    ],
+    "http://www.w3.org/ns/dcat#mediaType": [
+      {
+        "@value": "application/zarr"
+      }
+    ]
+  },
+  {
+    "@id": "_:N7ef45e14da0f4e64aa48b329e73dd23f",
+    "@type": [
+      "http://spdx.org/rdf/terms#Checksum"
+    ],
+    "http://spdx.org/rdf/terms#algorithm": [
+      {
+        "@id": "http://spdx.org/rdf/terms#checksumAlgorithm_md5"
+      }
+    ],
+    "http://spdx.org/rdf/terms#checksumValue": [
+      {
+        "@value": "cf42f8c8b1d4152d36857216bdfc5056"
       }
     ]
   }

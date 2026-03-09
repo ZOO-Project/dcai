@@ -1,0 +1,61 @@
+---
+title: "Appendices"
+format: html
+---
+
+## Appendix A: Installation {#appendix-a-installation}
+
+GeoCroissant support is available as an optional extra in the `mlcroissant` Python library. Installing it adds geospatial data processing capabilities and the converters needed to generate GeoCroissant metadata from existing formats.
+
+```bash
+pip install mlcroissant[geo]
+```
+
+For development installs (e.g., when working from a local clone of the repository):
+
+```bash
+pip install -e .[geo]
+```
+
+---
+
+## Appendix B: GeoSPARQL Query Examples {#appendix-c-geosparql-query-examples}
+
+The following SPARQL queries illustrate how GeoCroissant metadata exposed as RDF can be queried using GeoSPARQL predicates.
+
+### Query 1: Find Datasets by Geometry (Spatial Containment)
+
+This query retrieves all GeoCroissant datasets and records whose geometry falls within a specified bounding polygon.
+
+```sparql
+PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>
+PREFIX geocr:     <http://mlcommons.org/croissant/geo/1.0/>
+PREFIX dct:       <http://purl.org/dc/terms/>
+
+SELECT ?dataset ?record ?wkt
+WHERE {
+  ?dataset a geocr:Dataset ;
+           geocr:recordSet ?record .
+
+  ?record geosparql:hasGeometry ?geom .
+  ?geom geosparql:asWKT ?wkt .
+
+  FILTER(geof:sfWithin(?geom, "POLYGON((-120 30, -110 30, -110 40, -120 40, -120 30))"^^geosparql:wktLiteral))
+}
+```
+
+### Query 2: Discover Datasets by Exact Bounding Box Match
+
+This query returns all datasets whose bounding box matches a specific coordinate range.
+
+```sparql
+PREFIX geocr: <http://mlcommons.org/croissant/geo/1.0/>
+
+SELECT ?dataset ?record ?bbox
+WHERE {
+  ?dataset a geocr:Dataset ;
+           geocr:recordSet ?record .
+  ?record geocr:BoundingBox ?bbox .
+  FILTER(STR(?bbox) = "[-120.0, 30.0, -110.0, 40.0]")
+}
+```

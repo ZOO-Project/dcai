@@ -1,0 +1,226 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "geocr": "http://mlcommons.org/croissant/geo/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "dct": "http://purl.org/dc/terms/",
+    "sc": "https://schema.org/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "hls_burn_scars",
+  "description": "Geospatial dataset extracted from local hls_burn_scars directory containing Harmonized Landsat and Sentinel-2 imagery of burn scars and the associated masks.",
+  "conformsTo": [
+    "http://mlcommons.org/croissant/1.1",
+    "http://mlcommons.org/croissant/geo/1.0"
+  ],
+  "identifier": "10.57967/hf/0956",
+  "license": "Unknown",
+  "url": "file://./hls_burn_scars",
+  "creator": {
+    "@type": "Organization",
+    "name": "IBM-NASA Prithvi Models Family"
+  },
+  "datePublished": "2026-02-16",
+  "version": "1.0",
+  "keywords": [
+    "hls_burn_scars",
+    "background",
+    "burn_scar"
+  ],
+  "citeAs": "@dataset{hls_burn_scars,\n    title={hls_burn_scars},\n    author={IBM-NASA Prithvi Models Family},\n    year={2026},\n    publisher={TDML Dataset},\n    doi={10.57967/hf/0956}\n}",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "data_repo",
+      "name": "data_repo",
+      "description": "Directory containing the dataset files",
+      "contentUrl": "/teamspace/studios/this_studio/dcai/Introduction to Geocroissant/hls_burn_scars",
+      "encodingFormat": "local_directory",
+      "sha256": "placeholder_hash_for_directory"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "tiff-files",
+      "name": "tiff-files",
+      "description": "All TIFF files (images and masks).",
+      "containedIn": {
+        "@id": "data_repo"
+      },
+      "encodingFormat": "image/tiff",
+      "includes": "**/*.tif"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "hls_burn_scars",
+      "name": "hls_burn_scars",
+      "description": "Geospatial dataset extracted from local hls_burn_scars directory containing Harmonized Landsat and Sentinel-2 imagery of burn scars and the associated masks.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "hls_burn_scars/image",
+          "name": "hls_burn_scars/image",
+          "description": "Satellite imagery with multiple spectral bands",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "tiff-files"
+            },
+            "extract": {
+              "fileProperty": "fullpath"
+            },
+            "transform": {
+              "regex": ".*_merged\\.tif$"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 6,
+            "geocr:bandNameList": [
+              "Blue",
+              "Green",
+              "Red",
+              "NIR",
+              "SWIR1",
+              "SWIR2"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "hls_burn_scars/mask",
+          "name": "hls_burn_scars/mask",
+          "description": "Mask annotations with values representing different classes",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "tiff-files"
+            },
+            "extract": {
+              "fileProperty": "fullpath"
+            },
+            "transform": {
+              "regex": ".*\\.mask\\.tif$"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNameList": [
+              "mask"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "geocr:spectralBandMetadata": [
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Blue",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 490.0,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Green",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 560.0,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Red",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 665.0,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "NIR",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 865.0,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "SWIR1",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 1610.0,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "SWIR2",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 2200.0,
+        "unitText": "nm"
+      }
+    }
+  ],
+  "spatialCoverage": {
+    "@type": "Place",
+    "geo": {
+      "@type": "GeoShape",
+      "box": "32.0 -125.0 42.0 -114.0"
+    }
+  },
+  "dateCreated": "2026-02-16",
+  "dateModified": "2026-02-16"
+}

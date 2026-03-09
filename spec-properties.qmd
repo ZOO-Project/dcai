@@ -1,0 +1,407 @@
+---
+title: "Property Reference"
+format: html
+---
+
+GeoCroissant introduces a set of specialised metadata properties that extend the core Croissant vocabulary with geospatial concepts. This page provides a full technical reference for each property, including its domain, range, cardinality, and usage examples.
+
+## Namespaces
+
+The GeoCroissant vocabulary lives under its own namespace:
+
+```
+http://mlcommons.org/croissant/geo/
+```
+
+This is typically abbreviated using the prefix `geocr`. The table below lists all namespaces used in GeoCroissant metadata.
+
+| Prefix | IRI | Description |
+|---|---|---|
+| `sc` | `http://schema.org/` | The schema.org namespace |
+| `cr` | `http://mlcommons.org/croissant/` | MLCommons Croissant base namespace |
+| `geocr` | `http://mlcommons.org/croissant/geo/` | GeoCroissant extension namespace |
+| `dct` | `http://purl.org/dc/terms/` | Dublin Core Terms |
+
+The specification itself is versioned via its URI: `http://mlcommons.org/croissant/geo/1.0`. Note that the vocabulary namespace is *not* versioned — property IRIs remain stable across versions of the specification.
+
+---
+
+## Spatial Metadata
+
+### `geocr:coordinateReferenceSystem`
+
+The coordinate reference system (CRS) or projection used to interpret spatial data. This is essential for any dataset whose records need to be correctly aligned and compared across tools and platforms.
+
+| | |
+|---|---|
+| **Type** | `sc:Text` |
+| **Domain** | `sc:Dataset` |
+| **Cardinality** | ONE |
+
+```json
+{
+  "@type": "Dataset",
+  "geocr:coordinateReferenceSystem": "EPSG:4326"
+}
+```
+
+---
+
+### `geocr:spatialResolution`
+
+The nominal ground sampling distance — how much real-world area one pixel covers. Can be set at dataset level for uniform imagery, or at record level when resolution varies across records (e.g., Harmonized Landsat/Sentinel-2).
+
+| | |
+|---|---|
+| **Type** | `sc:Text` or `sc:QuantitativeValue` |
+| **Domain** | `sc:Dataset`, `cr:RecordSet` |
+| **Cardinality** | ONE |
+
+**Dataset level:**
+```json
+{
+  "geocr:spatialResolution": { "@type": "QuantitativeValue", "value": 30, "unitText": "m" }
+}
+```
+
+**Record level (when resolution varies):**
+```json
+{
+  "recordSet": [{
+    "@type": "cr:RecordSet",
+    "field": [{ "@type": "cr:Field", "name": "spatialResolution", "dataType": "sc:Text" }],
+    "data": [
+      { "spatialResolution": "10m" },
+      { "spatialResolution": "30m" }
+    ]
+  }]
+}
+```
+
+---
+
+### `geocr:spatialIndex`
+
+Precomputed spatial index tokens (e.g., H3 cells, DGGS identifiers, geohashes) that support fast coarse spatial filtering before running exact geometry operations. Particularly useful for large catalogs.
+
+| | |
+|---|---|
+| **Type** | `sc:Text` |
+| **Domain** | `sc:Dataset`, `cr:RecordSet` |
+| **Cardinality** | MANY |
+
+```json
+{
+  "geocr:spatialIndex": ["h3:8a2a1072b59fff", "h3:8a2a1072b5bfff"]
+}
+```
+
+---
+
+## Spectral & Band Metadata
+
+### `geocr:bandConfiguration`
+
+Describes how bands are organised within a raster dataset — how many there are, in what order, and what they represent. Can be set at dataset or field level.
+
+| | |
+|---|---|
+| **Type** | `geocr:BandConfiguration` |
+| **Domain** | `sc:Dataset`, `cr:Field` |
+| **Cardinality** | ONE |
+
+```json
+{
+  "geocr:bandConfiguration": {
+    "@type": "geocr:BandConfiguration",
+    "geocr:totalBands": 6,
+    "geocr:bandNameList": ["Blue", "Green", "Red", "NIR", "SW1", "SW2"]
+  }
+}
+```
+
+---
+
+### `geocr:totalBands`
+
+The total number of bands in the raster asset.
+
+| | |
+|---|---|
+| **Type** | `sc:Integer` |
+| **Domain** | `geocr:BandConfiguration` |
+| **Cardinality** | ONE |
+
+```json
+"geocr:totalBands": 6
+```
+
+---
+
+### `geocr:bandNameList`
+
+An ordered list of band names corresponding to the raster band stack.
+
+| | |
+|---|---|
+| **Type** | `sc:Text` |
+| **Domain** | `geocr:BandConfiguration` |
+| **Cardinality** | MANY |
+
+```json
+"geocr:bandNameList": ["Blue", "Green", "Red", "NIR", "SW1", "SW2"]
+```
+
+---
+
+### `geocr:spectralBandMetadata`
+
+Per-band spectral descriptors — center wavelength, bandwidth, and similar physical quantities. Use this when downstream systems or models need band physics beyond simple names.
+
+| | |
+|---|---|
+| **Type** | `geocr:SpectralBand` |
+| **Domain** | `sc:Dataset`, `cr:Field` |
+| **Cardinality** | MANY |
+
+```json
+{
+  "geocr:spectralBandMetadata": [
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Blue",
+      "geocr:centerWavelength": { "@type": "QuantitativeValue", "value": 490, "unitText": "nm" },
+      "geocr:bandwidth": { "@type": "QuantitativeValue", "value": 98, "unitText": "nm" }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "NIR",
+      "geocr:centerWavelength": { "@type": "QuantitativeValue", "value": 865, "unitText": "nm" }
+    }
+  ]
+}
+```
+
+---
+
+### `geocr:centerWavelength`
+
+The center wavelength for a spectral band.
+
+| | |
+|---|---|
+| **Type** | `sc:QuantitativeValue` |
+| **Domain** | `geocr:SpectralBand` |
+| **Cardinality** | ONE |
+
+```json
+"geocr:centerWavelength": { "@type": "QuantitativeValue", "value": 490, "unitText": "nm" }
+```
+
+---
+
+### `geocr:bandwidth`
+
+The spectral bandwidth (full-width at half-maximum) for a band entry.
+
+| | |
+|---|---|
+| **Type** | `sc:QuantitativeValue` |
+| **Domain** | `geocr:SpectralBand` |
+| **Cardinality** | ZERO or ONE |
+
+```json
+"geocr:bandwidth": { "@type": "QuantitativeValue", "value": 98, "unitText": "nm" }
+```
+
+---
+
+## Temporal Metadata
+
+### `geocr:temporalResolution`
+
+The temporal cadence of the collection — how frequently observations are taken. Can be set at dataset or record level when cadence varies.
+
+| | |
+|---|---|
+| **Type** | `sc:Text` or `sc:QuantitativeValue` |
+| **Domain** | `sc:Dataset`, `cr:RecordSet` |
+| **Cardinality** | ZERO or ONE |
+
+```json
+"geocr:temporalResolution": { "@type": "QuantitativeValue", "value": 1, "unitText": "month" }
+```
+
+---
+
+### `geocr:timeSeriesIndex`
+
+Identifies the field within a RecordSet that provides the temporal ordering key — typically a timestamp. This allows downstream systems to sort, slice, and batch time-series records reliably.
+
+| | |
+|---|---|
+| **Type** | `sc:Text` |
+| **Domain** | `cr:RecordSet` |
+| **Cardinality** | ZERO or ONE |
+
+```json
+{
+  "@type": "cr:RecordSet",
+  "geocr:timeSeriesIndex": { "@id": "timeseries_recordset/timestamp" },
+  "field": [
+    { "@type": "cr:Field", "@id": "timeseries_recordset/timestamp", "name": "timestamp", "dataType": "sc:DateTime" }
+  ]
+}
+```
+
+---
+
+## Responsible GeoAI
+
+### `geocr:spatialBias`
+
+A plain-language description of any known geographic representativeness limitations that could affect model generalisation — for example, if coverage is concentrated in one region or continent.
+
+| | |
+|---|---|
+| **Type** | `sc:Text` |
+| **Domain** | `sc:Dataset` |
+| **Cardinality** | ZERO or ONE |
+
+```json
+"geocr:spatialBias": "Coverage is concentrated over the contiguous United States; high-latitude regions and other global biomes are under-represented."
+```
+
+---
+
+### `geocr:samplingStrategy`
+
+Describes how training samples were constructed — including windowing strategies, filtering criteria, and any design choices that influence what the model learns.
+
+| | |
+|---|---|
+| **Type** | `sc:Text` |
+| **Domain** | `sc:Dataset` |
+| **Cardinality** | ZERO or ONE |
+
+```json
+"geocr:samplingStrategy": "512×512 chips centred on burn polygons; cloudy scenes removed."
+```
+
+---
+
+## Programmatic Access
+
+### `geocr:recordEndpoint`
+
+A URL pointing to a service where the dataset's metadata records can be queried and retrieved programmatically. This is useful when GeoCroissant metadata is served dynamically from a catalog or registry (e.g., an OGC API – Records endpoint).
+
+Clients can use this endpoint to list records, page through results, and apply spatial or temporal filters — for example by appending `?bbox=-125,24,-66,49` or `?datetime=2018-01-01/2021-12-31`.
+
+| | |
+|---|---|
+| **Type** | `sc:URL` |
+| **Domain** | `sc:Dataset` |
+| **Cardinality** | ZERO or ONE |
+
+```json
+"geocr:recordEndpoint": "https://example.org/ogcapi/records"
+```
+
+---
+
+## Space Weather Metadata
+
+These properties support heliophysics and space weather datasets, where observations are described using wavelength channels and instrument characterisation rather than geographic coordinates.
+
+### `geocr:multiWavelengthConfiguration`
+
+A composite wrapper describing the wavelength channels used in a space weather or heliophysics dataset, designed to simplify authoring and support mapping to SPASE constructs.
+
+| | |
+|---|---|
+| **Type** | `geocr:MultiWavelengthConfiguration` |
+| **Domain** | `sc:Dataset` |
+| **Cardinality** | ZERO or ONE |
+
+```json
+{
+  "geocr:multiWavelengthConfiguration": {
+    "@type": "geocr:MultiWavelengthConfiguration",
+    "geocr:channelList": ["171Å", "193Å"]
+  }
+}
+```
+
+---
+
+### `geocr:solarInstrumentCharacteristics`
+
+A composite wrapper for solar instrument characterisation — observatory and instrument identifiers — to support mapping to SPASE.
+
+| | |
+|---|---|
+| **Type** | `geocr:SolarInstrumentCharacteristics` |
+| **Domain** | `sc:Dataset` |
+| **Cardinality** | ZERO or ONE |
+
+```json
+{
+  "geocr:solarInstrumentCharacteristics": {
+    "@type": "geocr:SolarInstrumentCharacteristics",
+    "geocr:observatory": "SDO",
+    "geocr:instrument": "AIA"
+  }
+}
+```
+
+---
+
+### `geocr:observatory`
+
+Name or identifier of the observatory or platform.
+
+```json
+"geocr:observatory": "SDO"
+```
+
+### `geocr:instrument`
+
+Name or identifier of the instrument producing the measurement.
+
+```json
+"geocr:instrument": "AIA"
+```
+
+### `geocr:channelList`
+
+The wavelength channels used in a multi-wavelength dataset.
+
+```json
+"geocr:channelList": ["171Å", "193Å"]
+```
+
+---
+
+## Adding Custom Properties
+
+If a metadata attribute is already defined in an established vocabulary (GeoSPARQL, SPASE, Dublin Core), reuse that term directly by declaring the appropriate prefix in `@context`.
+
+If no suitable external term exists, express the attribute using `sc:additionalProperty` with `sc:PropertyValue`:
+
+```json
+{
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "cloudCoverMedian",
+      "value": { "@type": "QuantitativeValue", "value": 12.3, "unitText": "%" }
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "tilingScheme",
+      "value": "MGRS"
+    }
+  ]
+}
+```

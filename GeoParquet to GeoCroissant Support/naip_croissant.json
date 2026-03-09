@@ -1,0 +1,312 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "geocr": "http://mlcommons.org/croissant/geo/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "dct": "http://purl.org/dc/terms/",
+    "sc": "https://schema.org/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "equivalentProperty": "cr:equivalentProperty",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "naip_geoparquet",
+  "description": "NAIP dataset accessed via STAC and converted to GeoParquet.",
+  "url": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/naip",
+  "citeAs": "@dataset{naip, title={naip GeoParquet dataset}}",
+  "datePublished": "2026-02-23",
+  "version": "1.0",
+  "license": "https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/",
+  "conformsTo": [
+    "http://mlcommons.org/croissant/1.1",
+    "http://mlcommons.org/croissant/geo/1.0"
+  ],
+  "temporalCoverage": "2023-11-17/2023-11-17",
+  "geocr:coordinateReferenceSystem": "EPSG:4326",
+  "spatialCoverage": {
+    "@type": "Place",
+    "geo": {
+      "@type": "GeoShape",
+      "box": "45.059225 -116.066472 49.065003 -113.182469"
+    }
+  },
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "naip.parquet",
+      "name": "naip.parquet",
+      "description": "GeoParquet representation of naip STAC items",
+      "contentUrl": "./naip.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "951f081aa09fc063b2fb7790122c96efe4c857b6bdf0746889d6cc2731477284"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "naip_items",
+      "name": "naip_items",
+      "description": "STAC items for the naip collection.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "naip_items/id",
+          "name": "naip_items/id",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "naip.parquet"
+            },
+            "extract": {
+              "column": "id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "naip_items/geometry",
+          "name": "naip_items/geometry",
+          "description": "WKB binary of the item geometry",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "naip.parquet"
+            },
+            "extract": {
+              "column": "geometry"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "naip_items/image_url",
+          "name": "naip_items/image_url",
+          "dataType": "sc:URL",
+          "source": {
+            "fileObject": {
+              "@id": "naip.parquet"
+            },
+            "extract": {
+              "column": "assets"
+            },
+            "transform": {
+              "jsonPath": "$.image.href"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 4,
+            "geocr:bandNameList": [
+              "Red",
+              "Green",
+              "Blue",
+              "NIR"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "naip_items/datetime",
+          "name": "naip_items/datetime",
+          "description": "Acquisition datetime (UTC ms epoch)",
+          "dataType": "sc:DateTime",
+          "source": {
+            "fileObject": {
+              "@id": "naip.parquet"
+            },
+            "extract": {
+              "column": "datetime"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "naip_items/gsd",
+          "name": "naip_items/gsd",
+          "description": "Ground sample distance in metres",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "naip.parquet"
+            },
+            "extract": {
+              "column": "gsd"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "naip_items/proj_code",
+          "name": "naip_items/proj_code",
+          "description": "Native projected CRS of the imagery tile",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "naip.parquet"
+            },
+            "extract": {
+              "column": "proj:code"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "naip_items/thumbnail_url",
+          "name": "naip_items/thumbnail_url",
+          "description": "Thumbnail URL for the imagery tile",
+          "dataType": "sc:URL",
+          "source": {
+            "fileObject": {
+              "@id": "naip.parquet"
+            },
+            "extract": {
+              "column": "assets"
+            },
+            "transform": {
+              "jsonPath": "$.thumbnail.href"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "naip_items/naip_state",
+          "name": "naip_items/naip_state",
+          "description": "STAC property: naip:state",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "naip.parquet"
+            },
+            "extract": {
+              "column": "naip:state"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "naip_items/naip_year",
+          "name": "naip_items/naip_year",
+          "description": "STAC property: naip:year",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "naip.parquet"
+            },
+            "extract": {
+              "column": "naip:year"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "geocr:spatialResolution": {
+    "@type": "QuantitativeValue",
+    "value": 0.6,
+    "unitText": "m"
+  },
+  "geocr:spectralBandMetadata": [
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Red",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 660,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 60,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Green",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 560,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 80,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Blue",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 470,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 100,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "NIR",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 825,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 150,
+        "unitText": "nm"
+      }
+    }
+  ],
+  "creator": {
+    "@type": "Organization",
+    "name": "USDA Farm Service Agency",
+    "url": "https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/"
+  }
+}

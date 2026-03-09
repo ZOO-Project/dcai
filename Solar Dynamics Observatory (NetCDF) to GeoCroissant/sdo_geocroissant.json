@@ -1,0 +1,570 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "geocr": "http://mlcommons.org/croissant/geo/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "dct": "http://purl.org/dc/terms/",
+    "sc": "https://schema.org/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "SDO Multi-Instrument Solar Observations",
+  "description": "Solar Dynamics Observatory (SDO) multi-instrument dataset containing synchronized observations from the Atmospheric Imaging Assembly (AIA) and Helioseismic and Magnetic Imager (HMI). Each timestep includes 8 AIA extreme ultraviolet (EUV) wavelength channels (94\u00c5, 131\u00c5, 171\u00c5, 193\u00c5, 211\u00c5, 304\u00c5, 335\u00c5, 1600\u00c5) and 5 HMI magnetic field measurements. All data are provided as 4096x4096 pixel full-disk images in NetCDF4 format, capturing the dynamic solar atmosphere and magnetic field evolution for space weather research and solar physics studies.",
+  "url": "https://sdo.gsfc.nasa.gov/",
+  "citeAs": "@article{Pesnell2012, title={The Solar Dynamics Observatory (SDO)}, author={Pesnell, W. Dean and Thompson, B. J. and Chamberlin, P. C.}, journal={Solar Physics}, volume={275}, pages={3--15}, year={2012}, doi={10.1007/s11207-011-9841-3}}",
+  "datePublished": "2010-02-11",
+  "version": "1.0",
+  "license": "CC0-1.0",
+  "conformsTo": [
+    "http://mlcommons.org/croissant/1.1",
+    "http://mlcommons.org/croissant/geo/1.0"
+  ],
+  "identifier": "nasa-sdo/aia-hmi-core",
+  "alternateName": [
+    "SDO",
+    "Solar Dynamics Observatory"
+  ],
+  "creator": {
+    "@type": "Organization",
+    "name": "NASA Solar Dynamics Observatory",
+    "url": "https://sdo.gsfc.nasa.gov/"
+  },
+  "keywords": [
+    "SDO",
+    "Solar Dynamics Observatory",
+    "AIA",
+    "HMI",
+    "space weather",
+    "heliophysics",
+    "solar physics",
+    "magnetic field",
+    "extreme ultraviolet",
+    "EUV",
+    "magnetogram",
+    "Doppler velocity",
+    "solar atmosphere",
+    "NetCDF",
+    "time series"
+  ],
+  "temporalCoverage": "2011-01-20/2019-01-23",
+  "geocr:temporalResolution": {
+    "@type": "QuantitativeValue",
+    "value": 12,
+    "unitText": "minutes"
+  },
+  "geocr:coordinateReferenceSystem": "Helioprojective-Cartesian (HPC)",
+  "spatialCoverage": {
+    "@type": "Place",
+    "geo": {
+      "@type": "GeoShape",
+      "description": "Full solar disk coverage from Sun-Earth L1 Lagrange point"
+    }
+  },
+  "geocr:spatialResolution": {
+    "@type": "QuantitativeValue",
+    "value": 0.6,
+    "unitText": "arcsec/pixel"
+  },
+  "geocr:samplingStrategy": "Full-disk synchronized observations from AIA and HMI instruments, temporally aligned to 12-minute cadence snapshots",
+  "geocr:solarInstrumentCharacteristics": {
+    "@type": "geocr:SolarInstrumentCharacteristics",
+    "geocr:observatory": "Solar Dynamics Observatory (SDO)",
+    "geocr:instrument": "AIA (Atmospheric Imaging Assembly) and HMI (Helioseismic and Magnetic Imager)"
+  },
+  "geocr:multiWavelengthConfiguration": {
+    "@type": "geocr:MultiWavelengthConfiguration",
+    "geocr:channelList": [
+      "94\u00c5",
+      "131\u00c5",
+      "171\u00c5",
+      "193\u00c5",
+      "211\u00c5",
+      "304\u00c5",
+      "335\u00c5",
+      "1600\u00c5"
+    ],
+    "description": "AIA multi-wavelength EUV channels sampling different temperature regimes of the solar atmosphere"
+  },
+  "geocr:spectralBandMetadata": [
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "AIA_94",
+      "description": "AIA 94\u00c5 - Fe XVIII emission, ~6.3 MK corona and flare plasma",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 94,
+        "unitText": "Angstrom"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 3,
+        "unitText": "Angstrom"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "AIA_131",
+      "description": "AIA 131\u00c5 - Fe VIII/XXI emission, ~0.4 MK and ~11 MK cool and hot plasma",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 131,
+        "unitText": "Angstrom"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 7,
+        "unitText": "Angstrom"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "AIA_171",
+      "description": "AIA 171\u00c5 - Fe IX emission, ~0.6 MK quiet corona",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 171,
+        "unitText": "Angstrom"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 6,
+        "unitText": "Angstrom"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "AIA_193",
+      "description": "AIA 193\u00c5 - Fe XII/XXIV emission, ~1.5 MK and ~20 MK corona and hot flare plasma",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 193,
+        "unitText": "Angstrom"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 6,
+        "unitText": "Angstrom"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "AIA_211",
+      "description": "AIA 211\u00c5 - Fe XIV emission, ~2 MK active regions",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 211,
+        "unitText": "Angstrom"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 6,
+        "unitText": "Angstrom"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "AIA_304",
+      "description": "AIA 304\u00c5 - He II emission, ~0.05 MK chromosphere and transition region",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 304,
+        "unitText": "Angstrom"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 4,
+        "unitText": "Angstrom"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "AIA_335",
+      "description": "AIA 335\u00c5 - Fe XVI emission, ~2.5 MK active region corona",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 335,
+        "unitText": "Angstrom"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 4,
+        "unitText": "Angstrom"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "AIA_1600",
+      "description": "AIA 1600\u00c5 - C IV continuum emission, ~0.005 MK upper photosphere and transition region",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 1600,
+        "unitText": "Angstrom"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 55,
+        "unitText": "Angstrom"
+      }
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "data_repo",
+      "name": "data_repo",
+      "description": "SDO dataset directory containing NetCDF4 files",
+      "contentUrl": "core-sdo/infer_data",
+      "encodingFormat": "local_directory",
+      "sha256": "placeholder_checksum_for_directory"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "nc-files",
+      "name": "nc-files",
+      "description": "All NetCDF4 files containing synchronized AIA and HMI observations (15 files)",
+      "containedIn": {
+        "@id": "data_repo"
+      },
+      "encodingFormat": "application/x-netcdf",
+      "includes": "*.nc"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "sdo_observations",
+      "name": "sdo_observations",
+      "description": "SDO full-disk multi-instrument observations with 8 AIA EUV channels and 5 HMI magnetic field variables",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/aia94",
+          "name": "aia94",
+          "description": "AIA 94\u00c5 channel - Fe XVIII emission for corona and flare plasma at ~6.3 MK. Data units: DN/s. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "aia94"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "aia94"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/aia131",
+          "name": "aia131",
+          "description": "AIA 131\u00c5 channel - Fe VIII/XXI emission for cool and hot plasma at ~0.4 MK and ~11 MK. Data units: DN/s. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "aia131"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "aia131"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/aia171",
+          "name": "aia171",
+          "description": "AIA 171\u00c5 channel - Fe IX emission for quiet corona at ~0.6 MK. Data units: DN/s. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "aia171"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "aia171"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/aia193",
+          "name": "aia193",
+          "description": "AIA 193\u00c5 channel - Fe XII/XXIV emission for corona and hot flare plasma at ~1.5 MK and ~20 MK. Data units: DN/s. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "aia193"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "aia193"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/aia211",
+          "name": "aia211",
+          "description": "AIA 211\u00c5 channel - Fe XIV emission for active regions at ~2 MK. Data units: DN/s. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "aia211"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "aia211"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/aia304",
+          "name": "aia304",
+          "description": "AIA 304\u00c5 channel - He II emission for chromosphere and transition region at ~0.05 MK. Data units: DN/s. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "aia304"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "aia304"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/aia335",
+          "name": "aia335",
+          "description": "AIA 335\u00c5 channel - Fe XVI emission for active region corona at ~2.5 MK. Data units: DN/s. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "aia335"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "aia335"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/aia1600",
+          "name": "aia1600",
+          "description": "AIA 1600\u00c5 channel - C IV continuum emission for upper photosphere and transition region at ~0.005 MK. Data units: DN/s. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "aia1600"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "aia1600"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/hmi_m",
+          "name": "hmi_m",
+          "description": "HMI line-of-sight magnetogram - measures the magnetic field component along the line of sight from observer to Sun. Data units: Gauss. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "hmi_m"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "hmi_m"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/hmi_bx",
+          "name": "hmi_bx",
+          "description": "HMI vector magnetic field X-component (east-west direction in heliographic coordinates). Data units: Gauss. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "hmi_bx"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "hmi_bx"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/hmi_by",
+          "name": "hmi_by",
+          "description": "HMI vector magnetic field Y-component (north-south direction in heliographic coordinates). Data units: Gauss. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "hmi_by"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "hmi_by"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/hmi_bz",
+          "name": "hmi_bz",
+          "description": "HMI vector magnetic field Z-component (radial direction normal to solar surface). Data units: Gauss. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "hmi_bz"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "hmi_bz"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sdo/hmi_v",
+          "name": "hmi_v",
+          "description": "HMI line-of-sight Doppler velocity - measures plasma motion via Doppler shift of spectral lines. Positive values indicate motion away from observer. Data units: m/s. Image dimensions: 4096x4096 pixels.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": {
+              "@id": "nc-files"
+            },
+            "extract": {
+              "column": "hmi_v"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNamesList": [
+              "hmi_v"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

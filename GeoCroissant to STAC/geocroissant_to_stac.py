@@ -1,155 +1,163 @@
 import json
 from datetime import datetime
 from pystac import Item, Asset, MediaType
-from pystac.extensions.table import TableExtension
+from pystac.extensions.projection import ProjectionExtension
 
-# License mapping from URL
-KNOWN_LICENSES = {
-    "https://choosealicense.com/licenses/cc-by-4.0/": "CC-BY-4.0",
-    "https://opensource.org/licenses/mit": "MIT",
-    "https://www.apache.org/licenses/license-2.0": "Apache-2.0",
-    "cc-by-4.0": "CC-BY-4.0",
-}
-
-def croissant_to_stac_item(croissant_json, output_path=None):
-    """Convert Croissant metadata to STAC Item."""
-    if isinstance(croissant_json, str):
-        metadata = json.loads(croissant_json)
-    else:
-        metadata = croissant_json
-
+def geocroissant_to_stac(geocroissant_data):
+    """Convert GeoCroissant metadata to STAC Item."""
+    
     # Extract basic metadata
-    item_id = metadata.get("identifier", metadata.get("name", "unknown-id")).replace("/", "_")
-    title = metadata.get("name", "")
-    description = metadata.get("description", "")
-    license_raw = metadata.get("license", "proprietary")
-    keywords = metadata.get("keywords", [])
-    dataset_url = metadata.get("url", "")
-    alternate_names = metadata.get("alternateName", [])
-
-    # Normalize license
-    license_key = license_raw.strip().lower()
-    license_normalized = KNOWN_LICENSES.get(license_key, 
-                                          license_key.upper() if "cc-by" in license_key else "proprietary")
-
-    # Handle creator information
-    creator = metadata.get("creator", {})
-    if isinstance(creator, list):
-        creator = creator[0] if creator else {}
-    creator_name = creator.get("name", "Unknown") if isinstance(creator, dict) else str(creator)
-    creator_url = creator.get("url", "") if isinstance(creator, dict) else ""
-
-    # Temporal coverage (from description)
-    start_datetime = datetime(2018, 1, 1)
-    end_datetime = datetime(2021, 12, 31)
-    midpoint_datetime = datetime(2019, 6, 30)
-
+    item_id = geocroissant_data.get("name", "unknown").replace(" ", "_")
+    title = geocroissant_data.get("name", "")
+    description = geocroissant_data.get("description", "")
+    license_info = geocroissant_data.get("license", "proprietary")
+    keywords = geocroissant_data.get("keywords", [])
+    
+    # Parse spatial coverage (GeoCroissant format: "south west north east")
+    spatial_coverage = geocroissant_data.get("spatialCoverage", {})
+    geo_info = spatial_coverage.get("geo", {}) if isinstance(spatial_coverage, dict) else {}
+    bbox_string = geo_info.get("box", "") if isinstance(geo_info, dict) else ""
+    
+    if bbox_string:
+        coords = [float(x) for x in bbox_string.split()]
+        south, west, north, east = coords
+        bbox = [west, south, east, north]  # STAC format: [west, south, east, north]
+        geometry = {
+            "type": "Polygon",
+            "coordinates": [[
+                [west, south], [west, north], [east, north], [east, south], [west, south]
+            ]]
+        }
+    else:
+        # Default to global extent if no spatial coverage provided
+        bbox = [-180, -90, 180, 90]
+        geometry = {
+            "type": "Polygon",
+            "coordinates": [[
+                [-180, -90], [-180, 90], [180, 90], [180, -90], [-180, -90]
+            ]]
+        }
+    
+    # Parse temporal coverage (ISO 8601: "start/end")
+    temporal_coverage = geocroissant_data.get("temporalCoverage", "")
+    if temporal_coverage and "/" in temporal_coverage:
+        start_str, end_str = temporal_coverage.split("/")
+        start_dt = datetime.fromisoformat(start_str)
+        end_dt = datetime.fromisoformat(end_str)
+        midpoint_dt = start_dt + (end_dt - start_dt) / 2
+    else:
+        start_dt = end_dt = None
+        midpoint_dt = datetime.now()
+    
+    # Build STAC properties
+    properties = {
+        "title": title,
+        "description": description,
+        "license": license_info,
+        "keywords": keywords,
+    }
+    
+    if start_dt and end_dt:
+        properties["start_datetime"] = start_dt.isoformat() + "Z"
+        properties["end_datetime"] = end_dt.isoformat() + "Z"
+    
+    # Add GeoCroissant metadata
+    crs = geocroissant_data.get("geocr:coordinateReferenceSystem")
+    
+    spatial_res = geocroissant_data.get("geocr:spatialResolution", {})
+    if isinstance(spatial_res, dict) and spatial_res.get("value"):
+        properties["gsd"] = float(spatial_res["value"])
+    
+    temporal_res = geocroissant_data.get("geocr:temporalResolution", {})
+    if isinstance(temporal_res, dict) and temporal_res.get("value"):
+        properties["geocr:temporalResolution"] = f"{temporal_res['value']} {temporal_res.get('unitText', '')}"
+    
+    sampling_strategy = geocroissant_data.get("geocr:samplingStrategy")
+    if sampling_strategy:
+        properties["geocr:samplingStrategy"] = sampling_strategy
+    
+    conforms_to = geocroissant_data.get("conformsTo", [])
+    if conforms_to:
+        properties["conformsTo"] = conforms_to
+    
     # Create STAC Item
     item = Item(
         id=item_id,
-        geometry={
-            "type": "Polygon",
-            "coordinates": [[
-                [-125.0, 24.0],  # SW
-                [-125.0, 50.0],   # NW
-                [-66.0, 50.0],    # NE
-                [-66.0, 24.0],    # SE
-                [-125.0, 24.0]    # SW (close polygon)
-            ]]
-        },
-        bbox=[-125.0, 24.0, -66.0, 50.0],  # CONUS bbox
-        datetime=midpoint_datetime,
-        properties={
-            "title": title,
-            "description": description,
-            "license": license_normalized,
-            "start_datetime": start_datetime.isoformat() + "Z",
-            "end_datetime": end_datetime.isoformat() + "Z",
-            "keywords": keywords,
-            "msft:region": "US",
-            "msft:short_description": "HLS burn scars imagery and masks for US (2018-2021)",
-            "providers": [{
-                "name": creator_name,
-                "roles": ["producer"],
-                "url": creator_url
-            }]
-        }
+        geometry=geometry,
+        bbox=bbox,
+        datetime=midpoint_dt,
+        properties=properties
     )
-
-    # Add extensions (only those valid for Items)
-    item.stac_extensions.extend([
-        "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-        "https://schemas.stacspec.org/v1.1.0/item-spec/json-schema/item.json"
-    ])
-
-    # Add only the actual assets from Croissant distribution
-    for dist in metadata.get("distribution", []):
-        href = dist.get("contentUrl")
-        if not href:
+    
+    # Add projection extension if CRS present
+    if crs and "EPSG:" in crs:
+        proj_ext = ProjectionExtension.ext(item, add_if_missing=True)
+        proj_ext.epsg = int(crs.replace("EPSG:", ""))
+    
+    # Process distribution to add assets
+    distribution = geocroissant_data.get("distribution", [])
+    for dist_item in distribution:
+        item_type = dist_item.get("@type", "")
+        content_url = dist_item.get("contentUrl", "")
+        
+        # Skip directory entries and file:// URLs
+        if not content_url or content_url.startswith("file://"):
             continue
-            
-        asset_id = dist.get("@id", dist.get("name", "asset")).replace(" ", "_").lower()
-        media_type = dist.get("encodingFormat", MediaType.JSON)
-        desc = dist.get("description", asset_id)
+        if "directory" in dist_item.get("encodingFormat", "").lower():
+            continue
+        
+        asset_id = dist_item.get("@id", dist_item.get("name", "asset")).replace(" ", "_").lower()
+        encoding_format = dist_item.get("encodingFormat", "")
         
         # Determine media type
-        if "parquet" in asset_id or "parquet" in media_type:
+        if "tiff" in encoding_format.lower() or "tif" in encoding_format.lower():
+            media_type = MediaType.GEOTIFF
+        elif "json" in encoding_format.lower():
+            media_type = MediaType.JSON
+        elif "parquet" in encoding_format.lower():
             media_type = MediaType.PARQUET
-        elif "git" in href:
-            media_type = "application/git"
-
-        item.add_asset(
-            asset_id,
-            Asset(
-                href=href,
-                media_type=media_type,
-                title=desc,
-                roles=["metadata"] if "git" in href else ["data"]
-            )
+        else:
+            media_type = encoding_format
+        
+        # Determine roles
+        roles = ["data"]
+        if "FileSet" in item_type:
+            roles.append("collection")
+        
+        asset = Asset(
+            href=content_url,
+            media_type=media_type,
+            title=dist_item.get("description", dist_item.get("name", "")),
+            roles=roles
         )
-
-    # Add documentation asset
-    item.add_asset(
-        "documentation",
-        Asset(
-            href=dataset_url,
-            title="Dataset Documentation",
-            media_type=MediaType.HTML,
-            roles=["metadata", "documentation"]
-        )
-    )
-
-    # Process record sets to add table schema
-    for record_set in metadata.get("recordSet", []):
-        if record_set.get("@id") == "hls_burn_scars":
-            TableExtension.ext(item, add_if_missing=True).columns = [
-                {
-                    "name": "image",
-                    "type": "binary",
-                    "description": "Harmonized Landsat and Sentinel-2 imagery"
-                },
-                {
-                    "name": "annotation",
-                    "type": "binary",
-                    "description": "Associated burn scar annotations"
-                },
-                {
-                    "name": "split",
-                    "type": "string",
-                    "description": "Dataset split (train/validation/test)"
-                }
-            ]
-
-    # Output or return result
-    if output_path:
-        item.save_object(dest_href=output_path)
-        print(f"STAC item saved to {output_path}")
-    else:
-        return item.to_dict()
-
-if __name__ == "__main__":
-    # Example usage
-    with open("croissant.json", "r") as f:
-        croissant_data = json.load(f)
-
-    stac_item = croissant_to_stac_item(croissant_data, output_path="stac_item.json")
+        
+        # Add file pattern for FileSets
+        includes = dist_item.get("includes")
+        if includes:
+            asset.extra_fields["file_pattern"] = includes
+        
+        item.add_asset(asset_id, asset)
+    
+    # Add spectral band metadata to GEOTIFF assets if present
+    spectral_bands = geocroissant_data.get("geocr:spectralBandMetadata", [])
+    if spectral_bands:
+        raster_bands = []
+        for band_info in spectral_bands:
+            raster_band = {"name": band_info.get("name", "")}
+            
+            center_wl = band_info.get("geocr:centerWavelength", {})
+            if isinstance(center_wl, dict) and center_wl.get("value"):
+                raster_band["center_wavelength"] = float(center_wl["value"])
+            
+            bandwidth = band_info.get("geocr:bandwidth", {})
+            if isinstance(bandwidth, dict) and bandwidth.get("value"):
+                raster_band["bandwidth"] = float(bandwidth["value"])
+            
+            raster_bands.append(raster_band)
+        
+        # Apply to GEOTIFF assets
+        for asset_key, asset in item.assets.items():
+            if asset.media_type in [MediaType.GEOTIFF, MediaType.COG]:
+                asset.extra_fields["raster:bands"] = raster_bands
+    
+    return item.to_dict()

@@ -1,0 +1,182 @@
+import json
+from datetime import datetime
+import xarray as xr
+import hashlib
+
+
+def create_nasa_t2m_2020_croissant():
+    """Create GeoCroissant metadata for NASA T2M 2020 following TTL specifications."""
+    
+    zarr_url = "https://nasa-power.s3.us-west-2.amazonaws.com/merra2/temporal/power_merra2_monthly_temporal_utc.zarr/"
+    
+    # Load dataset
+    ds_full = xr.open_zarr(zarr_url)
+    ds_2020 = ds_full.sel(time=slice("2020-01-01", "2020-12-31"))
+    
+    # Generate checksum
+    hash_input = f"{zarr_url}2020T2M".encode('utf-8')
+    checksum = hashlib.sha256(hash_input).hexdigest()
+    
+    # TTL-compliant GeoCroissant metadata
+    croissant = {
+        "@context": {
+            "@language": "en",
+            "@vocab": "https://schema.org/",
+            "citeAs": "cr:citeAs",
+            "column": "cr:column",
+            "conformsTo": "dct:conformsTo",
+            "cr": "http://mlcommons.org/croissant/",
+            "geocr": "http://mlcommons.org/croissant/geo/",
+            "rai": "http://mlcommons.org/croissant/RAI/",
+            "dct": "http://purl.org/dc/terms/",
+            "sc": "https://schema.org/",
+            "data": {
+                "@id": "cr:data",
+                "@type": "@json"
+            },
+            "examples": {
+                "@id": "cr:examples",
+                "@type": "@json"
+            },
+            "dataType": {
+                "@id": "cr:dataType",
+                "@type": "@vocab"
+            },
+            "extract": "cr:extract",
+            "field": "cr:field",
+            "fileProperty": "cr:fileProperty",
+            "fileObject": "cr:fileObject",
+            "fileSet": "cr:fileSet",
+            "format": "cr:format",
+            "includes": "cr:includes",
+            "isLiveDataset": "cr:isLiveDataset",
+            "jsonPath": "cr:jsonPath",
+            "key": "cr:key",
+            "md5": "cr:md5",
+            "parentField": "cr:parentField",
+            "path": "cr:path",
+            "recordSet": "cr:recordSet",
+            "references": "cr:references",
+            "regex": "cr:regex",
+            "repeated": "cr:repeated",
+            "replace": "cr:replace",
+            "samplingRate": "cr:samplingRate",
+            "separator": "cr:separator",
+            "source": "cr:source",
+            "subField": "cr:subField",
+            "transform": "cr:transform"
+        },
+        "@type": "sc:Dataset",
+        "name": "NASA POWER T2M 2020",
+        "description": "Temperature at 2 Meters monthly data for 2020",
+        "version": "1.0.0",
+        "license": "CC-BY-4.0",
+        "conformsTo": [
+            "http://mlcommons.org/croissant/1.1",
+            "http://mlcommons.org/croissant/geo/1.0"
+        ],
+        "citeAs": "@dataset{nasa_power_t2m_2020, title={NASA POWER T2M 2020}, year={2020}, url={https://nasa-power.s3.us-west-2.amazonaws.com}}",
+        "datePublished": "2020-01-01",
+        
+        # Standard spatial coverage using schema.org
+        "spatialCoverage": {
+            "@type": "Place",
+            "geo": {
+                "@type": "GeoShape",
+                "box": "-90.0 -180.0 90.0 179.375"
+            }
+        },
+        
+        # GeoCroissant spatial properties
+        "geocr:coordinateReferenceSystem": "EPSG:4326",
+        "geocr:spatialResolution": {
+            "@type": "QuantitativeValue",
+            "value": 0.5,
+            "unitText": "degrees"
+        },
+        "geocr:temporalResolution": {
+            "@type": "QuantitativeValue", 
+            "value": 1,
+            "unitText": "month"
+        },
+        
+        # Temporal coverage
+        "temporalCoverage": "2020-01-01/2020-12-31",
+        
+        "keywords": ["temperature", "climate", "nasa power", "t2m", "2020"],
+        
+        "distribution": [
+            {
+                "@type": "cr:FileObject",
+                "@id": "zarr-data",
+                "name": "zarr-data",
+                "contentUrl": zarr_url,
+                "encodingFormat": "application/zarr",
+                "md5": checksum[:32]
+            }
+        ],
+        
+        "recordSet": [
+            {
+                "@type": "cr:RecordSet",
+                "name": "t2m_data",
+                "field": [
+                    {
+                        "@type": "cr:Field",
+                        "name": "T2M",
+                        "description": "Temperature at 2 Meters",
+                        "dataType": "sc:Float",
+                        "source": {
+                            "fileObject": {
+                                "@id": "zarr-data"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "cr:Field", 
+                        "name": "latitude",
+                        "description": "Latitude coordinate",
+                        "dataType": "sc:Float",
+                        "source": {
+                            "fileObject": {
+                                "@id": "zarr-data"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "cr:Field",
+                        "name": "longitude",
+                        "description": "Longitude coordinate", 
+                        "dataType": "sc:Float",
+                        "source": {
+                            "fileObject": {
+                                "@id": "zarr-data"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "cr:Field",
+                        "name": "time",
+                        "description": "Time coordinate",
+                        "dataType": "sc:Text",
+                        "source": {
+                            "fileObject": {
+                                "@id": "zarr-data"
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    
+    # Save metadata
+    with open("NASA_T2M_2020_croissant.json", "w") as f:
+        json.dump(croissant, f, indent=2)
+    
+    return croissant
+
+
+# Execute
+if __name__ == "__main__":
+    croissant = create_nasa_t2m_2020_croissant()

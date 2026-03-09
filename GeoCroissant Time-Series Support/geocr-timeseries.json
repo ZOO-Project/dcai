@@ -1,0 +1,500 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "cr": "http://mlcommons.org/croissant/",
+    "geocr": "http://mlcommons.org/croissant/geo/",
+    "dct": "http://purl.org/dc/terms/",
+    "sc": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileObject": "cr:fileObject",
+    "fileProperty": "cr:fileProperty",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform",
+    "equivalentProperty": "cr:equivalentProperty",
+    "rai": "http://mlcommons.org/croissant/RAI/"
+  },
+  "@type": "sc:Dataset",
+  "name": "HLS_Sentinel2_TimeSeries_Jan_Dec_2025",
+  "description": "Sentinel-2B HLS time series with 12 monthly observations. IMPORTANT: Band configuration (13 bands) and spectral metadata are defined ONCE at dataset level and inherited by ALL monthly observations. Individual monthly granules with their TIFF file URLs listed in distribution.",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "version": "1.0.0",
+  "alternateName": "HLS Sentinel-2 Monthly Time Series",
+  "creator": {
+    "@type": "Organization",
+    "name": "Microsoft Planetary Computer",
+    "url": "https://planetarycomputer.microsoft.com"
+  },
+  "keywords": [
+    "satellite imagery",
+    "Sentinel-2",
+    "HLS",
+    "multispectral",
+    "time series",
+    "earth observation",
+    "remote sensing"
+  ],
+  "cr:citeAs": "Microsoft Planetary Computer HLS Sentinel-2B Collection",
+  "datePublished": "2025-01-27T18:45:02.025500+00:00",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "spatialCoverage": {
+    "@type": "Place",
+    "geo": {
+      "@type": "GeoShape",
+      "box": "33.346707 -118.087583 34.341617 -116.893886"
+    }
+  },
+  "temporalCoverage": "2025-01-27T18:45:02.025500+00:00/2025-12-28T18:45:07.041970+00:00",
+  "geocr:spatialResolution": {
+    "@type": "QuantitativeValue",
+    "value": 30.0,
+    "unitText": "m"
+  },
+  "geocr:coordinateReferenceSystem": "EPSG:32611",
+  "geocr:temporalResolution": {
+    "@type": "QuantitativeValue",
+    "value": 1,
+    "unitText": "month"
+  },
+  "geocr:bandConfiguration": {
+    "@type": "geocr:BandConfiguration",
+    "geocr:totalBands": 13,
+    "geocr:bandNameList": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B05",
+      "B06",
+      "B07",
+      "B08",
+      "B09",
+      "B10",
+      "B11",
+      "B12",
+      "B8A"
+    ]
+  },
+  "geocr:spectralBandMetadata": [
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "coastal",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 0.4439,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.027,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "blue",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 0.4966,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.098,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "green",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 0.56,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.045,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "red",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 0.6645,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.038,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "B05",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 0.7039,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.019,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "B06",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 0.7402,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.018,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "B07",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 0.7825,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.028,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "nir",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 0.8351,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.145,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "B09",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 0.945,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.026,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "cirrus",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 1.3735,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.075,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "swir16",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 1.6137,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.143,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "swir22",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 2.22024,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.242,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "B8A",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 0.8648,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 0.033,
+        "unitText": "nm"
+      }
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "cr:FileSet",
+      "@id": "granule_1_bands",
+      "name": "HLS.S30.T11SMT.2025027T183539.v2.0_spectral_bands",
+      "description": "13 spectral band GeoTIFF files for HLS.S30.T11SMT.2025027T183539.v2.0 (2025-01-27T18:45:02.025500Z)",
+      "contentUrl": "https://hls2euwest.blob.core.windows.net/hls2/S30/11/S/MT/2025/01/27/HLS.S30.T11SMT.2025027T183539.v2.0/HLS.S30.T11SMT.2025027T183539.v2.0",
+      "encodingFormat": "image/tiff",
+      "includes": "*.tif"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "granule_2_bands",
+      "name": "HLS.S30.T11SMT.2025057T183229.v2.0_spectral_bands",
+      "description": "13 spectral band GeoTIFF files for HLS.S30.T11SMT.2025057T183229.v2.0 (2025-02-26T18:45:02.681070Z)",
+      "contentUrl": "https://hls2euwest.blob.core.windows.net/hls2/S30/11/S/MT/2025/02/26/HLS.S30.T11SMT.2025057T183229.v2.0/HLS.S30.T11SMT.2025057T183229.v2.0",
+      "encodingFormat": "image/tiff",
+      "includes": "*.tif"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "granule_3_bands",
+      "name": "HLS.S30.T11SMT.2025087T182919.v2.0_spectral_bands",
+      "description": "13 spectral band GeoTIFF files for HLS.S30.T11SMT.2025087T182919.v2.0 (2025-03-28T18:45:01.106590Z)",
+      "contentUrl": "https://hls2euwest.blob.core.windows.net/hls2/S30/11/S/MT/2025/03/28/HLS.S30.T11SMT.2025087T182919.v2.0/HLS.S30.T11SMT.2025087T182919.v2.0",
+      "encodingFormat": "image/tiff",
+      "includes": "*.tif"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "granule_4_bands",
+      "name": "HLS.S30.T11SMT.2025117T182919.v2.0_spectral_bands",
+      "description": "13 spectral band GeoTIFF files for HLS.S30.T11SMT.2025117T182919.v2.0 (2025-04-27T18:45:00.802750Z)",
+      "contentUrl": "https://hls2euwest.blob.core.windows.net/hls2/S30/11/S/MT/2025/04/27/HLS.S30.T11SMT.2025117T182919.v2.0/HLS.S30.T11SMT.2025117T182919.v2.0",
+      "encodingFormat": "image/tiff",
+      "includes": "*.tif"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "granule_5_bands",
+      "name": "HLS.S30.T11SMT.2025147T182919.v2.0_spectral_bands",
+      "description": "13 spectral band GeoTIFF files for HLS.S30.T11SMT.2025147T182919.v2.0 (2025-05-27T18:45:00.787660Z)",
+      "contentUrl": "https://hls2euwest.blob.core.windows.net/hls2/S30/11/S/MT/2025/05/27/HLS.S30.T11SMT.2025147T182919.v2.0/HLS.S30.T11SMT.2025147T182919.v2.0",
+      "encodingFormat": "image/tiff",
+      "includes": "*.tif"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "granule_6_bands",
+      "name": "HLS.S30.T11SMT.2025177T182919.v2.0_spectral_bands",
+      "description": "13 spectral band GeoTIFF files for HLS.S30.T11SMT.2025177T182919.v2.0 (2025-06-26T18:45:01.614690Z)",
+      "contentUrl": "https://hls2euwest.blob.core.windows.net/hls2/S30/11/S/MT/2025/06/26/HLS.S30.T11SMT.2025177T182919.v2.0/HLS.S30.T11SMT.2025177T182919.v2.0",
+      "encodingFormat": "image/tiff",
+      "includes": "*.tif"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "granule_7_bands",
+      "name": "HLS.S30.T11SMT.2025212T182941.v2.0_spectral_bands",
+      "description": "13 spectral band GeoTIFF files for HLS.S30.T11SMT.2025212T182941.v2.0 (2025-07-31T18:45:20.590200Z)",
+      "contentUrl": "https://hls2euwest.blob.core.windows.net/hls2/S30/11/S/MT/2025/07/31/HLS.S30.T11SMT.2025212T182941.v2.0/HLS.S30.T11SMT.2025212T182941.v2.0",
+      "encodingFormat": "image/tiff",
+      "includes": "*.tif"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "granule_8_bands",
+      "name": "HLS.S30.T11SMT.2025242T182941.v2.0_spectral_bands",
+      "description": "13 spectral band GeoTIFF files for HLS.S30.T11SMT.2025242T182941.v2.0 (2025-08-30T18:45:18.177410Z)",
+      "contentUrl": "https://hls2euwest.blob.core.windows.net/hls2/S30/11/S/MT/2025/08/30/HLS.S30.T11SMT.2025242T182941.v2.0/HLS.S30.T11SMT.2025242T182941.v2.0",
+      "encodingFormat": "image/tiff",
+      "includes": "*.tif"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "granule_9_bands",
+      "name": "HLS.S30.T11SMT.2025272T183201.v2.0_spectral_bands",
+      "description": "13 spectral band GeoTIFF files for HLS.S30.T11SMT.2025272T183201.v2.0 (2025-09-29T18:45:15.059700Z)",
+      "contentUrl": "https://hls2euwest.blob.core.windows.net/hls2/S30/11/S/MT/2025/09/29/HLS.S30.T11SMT.2025272T183201.v2.0/HLS.S30.T11SMT.2025272T183201.v2.0",
+      "encodingFormat": "image/tiff",
+      "includes": "*.tif"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "granule_10_bands",
+      "name": "HLS.S30.T11SMT.2025302T183521.v2.0_spectral_bands",
+      "description": "13 spectral band GeoTIFF files for HLS.S30.T11SMT.2025302T183521.v2.0 (2025-10-29T18:45:12.507250Z)",
+      "contentUrl": "https://hls2euwest.blob.core.windows.net/hls2/S30/11/S/MT/2025/10/29/HLS.S30.T11SMT.2025302T183521.v2.0/HLS.S30.T11SMT.2025302T183521.v2.0",
+      "encodingFormat": "image/tiff",
+      "includes": "*.tif"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "granule_11_bands",
+      "name": "HLS.S30.T11SMT.2025334T183831.v2.0_spectral_bands",
+      "description": "13 spectral band GeoTIFF files for HLS.S30.T11SMT.2025334T183831.v2.0 (2025-11-30T18:45:16.375820Z)",
+      "contentUrl": "https://hls2euwest.blob.core.windows.net/hls2/S30/11/S/MT/2025/11/30/HLS.S30.T11SMT.2025334T183831.v2.0/HLS.S30.T11SMT.2025334T183831.v2.0",
+      "encodingFormat": "image/tiff",
+      "includes": "*.tif"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "granule_12_bands",
+      "name": "HLS.S30.T11SMT.2025362T183811.v2.0_spectral_bands",
+      "description": "13 spectral band GeoTIFF files for HLS.S30.T11SMT.2025362T183811.v2.0 (2025-12-28T18:45:07.041970Z)",
+      "contentUrl": "https://hls2euwest.blob.core.windows.net/hls2/S30/11/S/MT/2025/12/28/HLS.S30.T11SMT.2025362T183811.v2.0/HLS.S30.T11SMT.2025362T183811.v2.0",
+      "encodingFormat": "image/tiff",
+      "includes": "*.tif"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "time_series_observations",
+      "name": "time_series_observations",
+      "description": "Time-series with 12 monthly observations. Each record has 13 spectral bands as defined in dataset-level geocr:bandConfiguration.",
+      "geocr:timeSeriesIndex": "observation_datetime",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "time_series_observations/granule_id",
+          "name": "granule_id",
+          "description": "Unique identifier for monthly observation",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": "granule_1_bands",
+            "extract": {
+              "column": "granule_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "time_series_observations/observation_datetime",
+          "name": "observation_datetime",
+          "description": "Observation timestamp (ISO 8601)",
+          "dataType": "sc:DateTime",
+          "source": {
+            "fileSet": "granule_1_bands",
+            "extract": {
+              "column": "observation_datetime"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "time_series_observations/month",
+          "name": "month",
+          "description": "Year-month (YYYY-MM)",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": "granule_1_bands",
+            "extract": {
+              "column": "month"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "time_series_observations/platform",
+          "name": "platform",
+          "description": "Satellite platform",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": "granule_1_bands",
+            "extract": {
+              "column": "platform"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "time_series_observations/cloud_cover",
+          "name": "cloud_cover",
+          "description": "Cloud cover percentage",
+          "dataType": "sc:Float",
+          "source": {
+            "fileSet": "granule_1_bands",
+            "extract": {
+              "column": "cloud_cover"
+            }
+          }
+        }
+      ],
+      "examples": [
+        {
+          "granule_id": "HLS.S30.T11SMT.2025027T183539.v2.0",
+          "observation_datetime": "2025-01-27T18:45:02.025500Z",
+          "month": "2025-01",
+          "platform": "sentinel-2b",
+          "cloud_cover": 88.0
+        },
+        {
+          "granule_id": "HLS.S30.T11SMT.2025057T183229.v2.0",
+          "observation_datetime": "2025-02-26T18:45:02.681070Z",
+          "month": "2025-02",
+          "platform": "sentinel-2b",
+          "cloud_cover": 12.0
+        }
+      ]
+    }
+  ]
+}

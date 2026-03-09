@@ -1,0 +1,66 @@
+---
+title: "References"
+format: html
+---
+
+## Croissant & GeoCroissant
+
+* [MLCommons Croissant](http://mlcommons.org/croissant/)
+* [GeoCroissant Specification v1.0](http://mlcommons.org/croissant/geo/1.0)
+* [Croissant GitHub Repository](https://github.com/mlcommons/croissant)
+* [mlcroissant Python Library](https://pypi.org/project/mlcroissant/)
+* [Croissant Editor](https://huggingface.co/spaces/MLCommons/croissant-editor)
+
+## Metadata Standards
+
+* [schema.org Dataset](https://schema.org/Dataset)
+* [DCAT (Data Catalog Vocabulary)](https://www.w3.org/TR/vocab-dcat/)
+* [Dublin Core Terms](http://purl.org/dc/terms/)
+
+## Geospatial Standards
+
+* [STAC Specification](https://stacspec.org/)
+* [PySTAC](https://pystac.readthedocs.io/)
+* [OGC Standards](https://www.ogc.org/standards/)
+* [OGC Training Data Markup Language](https://www.ogc.org/standard/trainingdml/)
+* [GeoDCAT-AP](https://semiceu.github.io/GeoDCAT-AP/)
+* [NASA-UMM](https://earthdata.nasa.gov/esdis/esco/standards-and-practices/umm-g)
+
+## Cloud-Optimized Formats
+
+* [GeoParquet](https://geoparquet.org/)
+* [Cloud Optimized GeoTIFF](https://www.cogeo.org/)
+* [Zarr](https://zarr.readthedocs.io/)
+* [HDF5](https://www.hdfgroup.org/solutions/hdf5/)
+* [NetCDF](https://www.unidata.ucar.edu/software/netcdf/)
+
+## Python Geospatial Stack
+
+* [GDAL](https://gdal.org/)
+* [Rasterio](https://rasterio.readthedocs.io/)
+* [GeoPandas](https://geopandas.org/)
+* [PyProj](https://pyproj4.github.io/pyproj/)
+* [Shapely](https://shapely.readthedocs.io/)
+* [Xarray](https://xarray.pydata.org/)
+* [h5py](https://www.h5py.org/)
+* [rioxarray](https://corteva.github.io/rioxarray/)
+
+## ML Frameworks
+
+* [PyTorch](https://pytorch.org/)
+* [TensorFlow](https://www.tensorflow.org/)
+* [JAX](https://jax.readthedocs.io/)
+* [Hugging Face Datasets](https://huggingface.co/docs/datasets/)
+
+## Earth Observation Platforms
+
+* [Google Earth Engine](https://earthengine.google.com/)
+* [NASA Earthdata](https://earthdata.nasa.gov/)
+* [CEDA Archive](https://www.ceda.ac.uk/)
+* [Copernicus Data Space](https://dataspace.copernicus.eu/)
+
+## FAIR & Responsible AI
+
+* [FAIR Principles](https://www.go-fair.org/fair-principles/)
+* [Group on Earth Observations (GEO)](https://www.earthobservations.org/)
+* [Croissant RAI Extension](http://mlcommons.org/croissant/RAI/)

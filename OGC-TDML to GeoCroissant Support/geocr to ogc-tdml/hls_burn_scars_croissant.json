@@ -1,0 +1,285 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "geocr": "http://mlcommons.org/croissant/geo/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "dct": "http://purl.org/dc/terms/",
+    "sc": "https://schema.org/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "hls_burn_scars",
+  "description": "Geospatial dataset extracted from local hls_burn_scars directory containing Harmonized Landsat and Sentinel-2 imagery of burn scars and the associated masks.",
+  "url": "file://./hls_burn_scars",
+  "citeAs": "@dataset{hls_burn_scars, title={hls_burn_scars geospatial dataset}, year={2026}, url={file://./hls_burn_scars}}",
+  "datePublished": "2026-02-16",
+  "version": "1.0",
+  "license": "Unknown",
+  "conformsTo": [
+    "http://mlcommons.org/croissant/1.1",
+    "http://mlcommons.org/croissant/geo/1.0"
+  ],
+  "identifier": "10.57967/hf/0956",
+  "alternateName": [
+    "ibm-nasa-geospatial/hls_burn_scars"
+  ],
+  "creator": {
+    "@type": "Organization",
+    "name": "IBM-NASA Prithvi Models Family",
+    "url": "https://huggingface.co/ibm-nasa-geospatial"
+  },
+  "keywords": [
+    "hls_burn_scars",
+    "HLS",
+    "burn scars",
+    "fire",
+    "remote sensing",
+    "satellite imagery",
+    "Landsat",
+    "Sentinel-2",
+    "geospatial",
+    "English",
+    "cc-by-4.0",
+    "1K - 10K",
+    "Image",
+    "Datasets",
+    "Croissant",
+    "doi:10.57967/hf/0956",
+    "\ud83c\uddfa\ud83c\uddf8 Region: US"
+  ],
+  "temporalCoverage": "2018-01-01/2021-12-31",
+  "geocr:temporalResolution": {
+    "@type": "QuantitativeValue",
+    "value": 8,
+    "unitText": "weeks"
+  },
+  "geocr:coordinateReferenceSystem": "EPSG:32610",
+  "spatialCoverage": {
+    "@type": "Place",
+    "geo": {
+      "@type": "GeoShape",
+      "box": "32.0 -125.0 42.0 -114.0"
+    }
+  },
+  "geocr:spatialResolution": {
+    "@type": "QuantitativeValue",
+    "value": 30.0,
+    "unitText": "m"
+  },
+  "geocr:samplingStrategy": "Subsetted to 512x512 pixel windows covering burn scar areas",
+  "geocr:spectralBandMetadata": [
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Blue",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 490,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 65,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Green",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 560,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 60,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "Red",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 665,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 30,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "NIR",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 865,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 30,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "SWIR1",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 1610,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 90,
+        "unitText": "nm"
+      }
+    },
+    {
+      "@type": "geocr:SpectralBand",
+      "name": "SWIR2",
+      "geocr:centerWavelength": {
+        "@type": "QuantitativeValue",
+        "value": 2200,
+        "unitText": "nm"
+      },
+      "geocr:bandwidth": {
+        "@type": "QuantitativeValue",
+        "value": 180,
+        "unitText": "nm"
+      }
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "data_repo",
+      "name": "data_repo",
+      "description": "Directory containing the dataset files",
+      "contentUrl": "../../Introduction to Geocroissant/hls_burn_scars",
+      "encodingFormat": "local_directory",
+      "md5": "placeholder_hash_for_directory"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "tiff-files",
+      "name": "tiff-files",
+      "description": "All TIFF files (images and masks).",
+      "containedIn": {
+        "@id": "data_repo"
+      },
+      "encodingFormat": "image/tiff",
+      "includes": "**/*.tif"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "hls_burn_scars",
+      "name": "hls_burn_scars",
+      "description": "hls_burn_scars dataset with satellite imagery and mask annotations.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "hls_burn_scars/image",
+          "name": "hls_burn_scars/image",
+          "description": "File path to satellite imagery with multiple spectral bands converted to reflectance.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "tiff-files"
+            },
+            "extract": {
+              "fileProperty": "fullpath"
+            },
+            "transform": {
+              "regex": ".*_merged\\.tif$"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 6,
+            "geocr:bandNameList": [
+              "Blue",
+              "Green",
+              "Red",
+              "NIR",
+              "SWIR1",
+              "SWIR2"
+            ]
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "hls_burn_scars/mask",
+          "name": "hls_burn_scars/mask",
+          "description": "File path to mask annotations with values representing different classes.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "tiff-files"
+            },
+            "extract": {
+              "fileProperty": "fullpath"
+            },
+            "transform": {
+              "regex": ".*\\.mask\\.tif$"
+            }
+          },
+          "geocr:bandConfiguration": {
+            "@type": "geocr:BandConfiguration",
+            "geocr:totalBands": 1,
+            "geocr:bandNameList": [
+              "mask"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

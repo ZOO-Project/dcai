@@ -1,55 +1,77 @@
+@prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix geocr: <http://mlcommons.org/croissant/geo/> .
 @prefix schema: <https://schema.org/> .
 @prefix spdx: <http://spdx.org/rdf/terms#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://10.57967/hf/0956> a dcat:Dataset,
+<https://example.org/NASA%20POWER%20T2M%202020> a dcat:Dataset,
         schema:Dataset ;
-    dct:conformsTo <http://mlcommons.org/croissant/1.0> ;
-    dct:creator <https://huggingface.co/ibm-nasa-geospatial> ;
-    dct:description "This dataset contains Harmonized Landsat and Sentinel-2 imagery of burn scars and the associated masks for the years 2018-2021 over the contiguous United States. There are 804 512x512 scenes. Its primary purpose is for training geospatial machine learning models." ;
-    dct:identifier "10.57967/hf/0956" ;
-    dct:license <https://choosealicense.com/licenses/cc-by-4.0/> ;
-    dct:spatial <http://sws.geonames.org/6252001/> ;
-    dct:temporal <https://10.57967/hf/0956/period> ;
-    dct:title "hls_burn_scars" ;
-    dcat:distribution <https://10.57967/hf/0956/distribution/parquet-files-for-config-hls_burn_scars>,
-        <https://10.57967/hf/0956/distribution/repo> ;
-    dcat:keyword "1K - 10K",
-        "Croissant",
-        "Datasets",
-        "English",
-        "Image",
-        "cc-by-4.0",
-        "doi:10.57967/hf/0956",
-        "🇺🇸 Region: US" ;
-    dcat:landingPage <https://huggingface.co/datasets/ibm-nasa-geospatial/hls_burn_scars> ;
-    schema:alternateName "ibm-nasa-geospatial/hls_burn_scars" .
+    geocr:coordinateReferenceSystem <http://www.opengis.net/def/crs/EPSG:4326> ;
+    geocr:recordSet <https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data> ;
+    geocr:spatialResolution [ a schema:QuantitativeValue ;
+            schema:unitText "degrees" ;
+            schema:value 5e-01 ] ;
+    geocr:temporalResolution [ a schema:QuantitativeValue ;
+            schema:unitText "month" ;
+            schema:value 1 ] ;
+    dct:conformsTo <http://mlcommons.org/croissant/1.1>,
+        <http://mlcommons.org/croissant/geo/1.0> ;
+    dct:description "Temperature at 2 Meters monthly data for 2020" ;
+    dct:issued "2020-01-01"^^xsd:date ;
+    dct:license <CC-BY-4.0> ;
+    dct:spatial <https://example.org/NASA%20POWER%20T2M%202020/spatial> ;
+    dct:temporal <https://example.org/NASA%20POWER%20T2M%202020/temporal> ;
+    dct:title "NASA POWER T2M 2020" ;
+    adms:version "1.0.0" ;
+    dcat:distribution <https://example.org/NASA%20POWER%20T2M%202020/distribution/zarr-data> ;
+    dcat:keyword "2020",
+        "climate",
+        "nasa power",
+        "t2m",
+        "temperature" .
 
-<https://10.57967/hf/0956/distribution/parquet-files-for-config-hls_burn_scars> a dcat:Distribution ;
-    dct:description "The underlying Parquet files as converted by Hugging Face (see: https://huggingface.co/docs/dataset-viewer/parquet)." ;
-    dct:isPartOf <https://10.57967/hf/0956/distribution/repo> ;
-    dct:title "parquet-files-for-config-hls_burn_scars" ;
-    dcat:accessURL <https://example.org/data> ;
-    dcat:mediaType "application/x-parquet" ;
-    schema:hasPart "hls_burn_scars/*/*.parquet" .
+<https://example.org/NASA%20POWER%20T2M%202020/distribution/zarr-data> a dcat:Distribution ;
+    dct:title "zarr-data" ;
+    spdx:checksum [ a spdx:Checksum ;
+            spdx:algorithm spdx:checksumAlgorithm_md5 ;
+            spdx:checksumValue "cf42f8c8b1d4152d36857216bdfc5056" ] ;
+    dcat:accessURL <https://nasa-power.s3.us-west-2.amazonaws.com/merra2/temporal/power_merra2_monthly_temporal_utc.zarr/> ;
+    dcat:mediaType "application/zarr" .
 
-<https://10.57967/hf/0956/distribution/repo/checksum> a spdx:Checksum ;
-    spdx:algorithm "SHA256" ;
-    spdx:checksumValue "https://github.com/mlcommons/croissant/issues/80" .
+<https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data> a geocr:RecordSet ;
+    geocr:field <https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/T2M>,
+        <https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/latitude>,
+        <https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/longitude>,
+        <https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/time> ;
+    dct:title "t2m_data" .
 
-<https://10.57967/hf/0956/period> a dcat:PeriodOfTime ;
-    dcat:endDate "2021-12-31"^^xsd:date ;
-    dcat:startDate "2018-01-01"^^xsd:date .
+<https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/T2M> a geocr:Field ;
+    geocr:dataType "sc:Float" ;
+    dct:description "Temperature at 2 Meters" ;
+    dct:title "T2M" .
 
-<https://huggingface.co/ibm-nasa-geospatial> a foaf:Agent ;
-    foaf:name "IBM-NASA Prithvi Models Family" .
+<https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/latitude> a geocr:Field ;
+    geocr:dataType "sc:Float" ;
+    dct:description "Latitude coordinate" ;
+    dct:title "latitude" .
 
-<https://10.57967/hf/0956/distribution/repo> a dcat:Distribution ;
-    dct:description "The Hugging Face git repository." ;
-    dct:title "repo" ;
-    spdx:checksum <https://10.57967/hf/0956/distribution/repo/checksum> ;
-    dcat:accessURL <https://huggingface.co/datasets/ibm-nasa-geospatial/hls_burn_scars/tree/refs%2Fconvert%2Fparquet> ;
-    dcat:mediaType "git+https" .
+<https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/longitude> a geocr:Field ;
+    geocr:dataType "sc:Float" ;
+    dct:description "Longitude coordinate" ;
+    dct:title "longitude" .
+
+<https://example.org/NASA%20POWER%20T2M%202020/recordset/t2m_data/field/time> a geocr:Field ;
+    geocr:dataType "sc:Text" ;
+    dct:description "Time coordinate" ;
+    dct:title "time" .
+
+<https://example.org/NASA%20POWER%20T2M%202020/spatial> a dct:Location ;
+    geo:asWKT "POLYGON((-180.0 -90.0, 179.375 -90.0, 179.375 90.0, -180.0 90.0, -180.0 -90.0))"^^geo:wktLiteral .
+
+<https://example.org/NASA%20POWER%20T2M%202020/temporal> a dct:PeriodOfTime ;
+    dcat:endDate "2020-12-31"^^xsd:date ;
+    dcat:startDate "2020-01-01"^^xsd:date .
+

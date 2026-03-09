@@ -1,0 +1,94 @@
+---
+title: "GeoCroissant Recipes"
+format: html
+---
+
+## Authors
+
+::: {.grid}
+::: {.g-col-6}
+- Rajat Shinde
+- Manil Maskey
+- Ag Stephens
+- Harsh Shinde
+- Joseph Edgerton
+- Tejasri N
+- Douglas Fils
+:::
+::: {.g-col-6}
+- Edenna Chen
+- Claus Weiland
+- Pedram Ghamisi
+- Gerald Fenoy
+- Yuhan Douglas Rao
+- Omar Benjelloun
+- Elena Simperl
+:::
+:::
+
+## Overview
+
+GeoCroissant extends the MLCommons Croissant metadata standard with geospatial concepts for GeoAI and Earth observation workflows. These notebooks demonstrate practical implementation of GeoCroissant metadata creation, validation, and conversion across geospatial data formats and catalog standards.
+
+## What is GeoCroissant?
+
+GeoCroissant (http://mlcommons.org/croissant/geo/1.0) is a metadata extension that adds geospatial capabilities to the Croissant standard:
+
+- **Spatial & Temporal Coverage**: Geographic extent and time ranges
+- **Coordinate Reference Systems**: CRS definitions and transformations
+- **Spatial Resolution**: Ground sampling distance and pixel spacing
+- **Band Configuration**: Spectral band organization and metadata
+- **Time-Series Support**: Temporal cadence and ordering
+- **Responsible GeoAI**: Spatial bias and sampling strategy documentation
+
+## Notebook Categories
+
+### Introduction
+Core concepts and fundamental implementation patterns for GeoCroissant metadata.
+
+### Catalog to GeoCroissant
+Convert geospatial catalog metadata to GeoCroissant format from STAC, NASA UMM-G, CEDA CMIP6, and Google Earth Engine.
+
+### Data Format to GeoCroissant
+Generate GeoCroissant metadata from cloud-optimized geospatial data formats including GeoParquet, HDF5, NetCDF, and Zarr.
+
+### GeoCroissant Extensions
+Advanced features for time-series Earth observation data and OGC Training Data Markup Language integration.
+
+### GeoCroissant to Standards
+Export GeoCroissant metadata to STAC and GeoDCAT formats for interoperability.
+
+## ML Framework Integration
+
+GeoCroissant datasets integrate with PyTorch, TensorFlow, and JAX using the mlcroissant Python library:
+
+```python
+import mlcroissant as mlc
+dataset = mlc.Dataset("geocroissant.json")
+```
+
+## FAIR Principles
+
+GeoCroissant supports machine-actionable FAIR data:
+
+- **Findable**: Versioned URIs and schema.org vocabulary
+- **Accessible**: Standardized API endpoints and persistent URLs
+- **Interoperable**: Stable vocabulary terms and format conversions
+- **Reusable**: Explicit conformance and responsible AI metadata
+
+## Conformance
+
+GeoCroissant datasets declare conformance at the dataset level:
+
+```json
+"dct:conformsTo": [
+  "http://mlcommons.org/croissant/1.1",
+  "http://mlcommons.org/croissant/geo/1.0"
+]
+```
+
+## Acknowledgements
+
+- MLCommons GeoCroissant Working Group
+- MLCommons Croissant Working Group
+- Open Geospatial Consortium (OGC) GeoAI Domain Working Group

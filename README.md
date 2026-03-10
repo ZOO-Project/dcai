@@ -35,7 +35,11 @@ GeoCroissant datasets must declare conformance to both the Croissant and GeoCroi
 
 ## Authors
 
-Rajat Shinde, Manil Maskey, Ag Stephens, Harsh Shinde, Joseph Edgerton, Tejasri N, Douglas Fils, Edenna Chen, Claus Weiland, Pedram Ghamisi, Gerald Fenoy, Yuhan Douglas Rao, Omar Benjelloun, Elena Simperl
+```
+Rajat Shinde, Manil Maskey, AG Stephens, Harsh Shinde, Joseph Edgerton, Tejasri N.,  
+Douglas Fils, Edenna Chen, Claus Weiland, Pedram Ghamisi, Gerald Fenoy,  
+Yuhan Douglas Rao, Omar Benjelloun, and Elena Simperl
+```
 
 GeoCroissant Working Group · [croissant-geo@mlcommons.org](mailto:croissant-geo@mlcommons.org)
 
@@ -44,3 +48,4 @@ GeoCroissant Working Group · [croissant-geo@mlcommons.org](mailto:croissant-geo
 - MLCommons GeoCroissant Working Group
 - MLCommons Croissant Working Group
 - Open Geospatial Consortium (OGC) GeoAI Domain Working Group
+

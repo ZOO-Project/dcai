@@ -201,7 +201,7 @@
       "@id": "data_repo",
       "name": "data_repo",
       "description": "Directory containing the dataset files",
-      "contentUrl": "./hls_burn_scars",
+      "contentUrl": "../../Introduction to Geocroissant/hls_burn_scars",
       "encodingFormat": "local_directory",
       "md5": "placeholder_hash_for_directory"
     },

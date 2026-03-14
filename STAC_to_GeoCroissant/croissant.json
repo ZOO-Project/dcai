@@ -61,26 +61,6 @@
   ],
   "citeAs": "@misc{icesat2-boreal-v2.1-agb, title={boreal_agb_2020_202411261732637661_0038382}, year={2026}}",
   "url": "https://stac.maap-project.org/collections/icesat2-boreal-v2.1-agb/items/boreal_agb_2020_202411261732637661_0038382",
-  "references": [
-    {
-      "@type": "CreativeWork",
-      "url": "https://stac.maap-project.org/collections/icesat2-boreal-v2.1-agb",
-      "name": "collection",
-      "encodingFormat": "application/json"
-    },
-    {
-      "@type": "CreativeWork",
-      "url": "https://stac.maap-project.org/collections/icesat2-boreal-v2.1-agb",
-      "name": "STAC parent catalog",
-      "encodingFormat": "application/json"
-    },
-    {
-      "@type": "CreativeWork",
-      "url": "https://stac.maap-project.org/",
-      "name": "STAC root catalog",
-      "encodingFormat": "application/json"
-    }
-  ],
   "spatialCoverage": {
     "@type": "Place",
     "geo": {
@@ -88,8 +68,6 @@
       "box": "72.7215138641646 111.821583637516 73.8622051330815 115.626213868067"
     }
   },
-  "temporalCoverage": "2020-01-01T00:00:00Z/2020-12-31T23:59:59Z",
-  "datePublished": "2020-01-01",
   "distribution": [
     {
       "@type": "cr:FileObject",
@@ -98,15 +76,7 @@
       "description": "Gridded predictions of aboveground biomass (Mg/ha)",
       "contentUrl": "s3://nasa-maap-data-store/file-staging/nasa-map/icesat2-boreal-v2.1/agb/0038382/boreal_agb_2020_202411261732637661_0038382.tif",
       "encodingFormat": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "sha256": "PLACEHOLDER-CHECKSUM-REQUIRED",
-      "geocr:bandConfiguration": {
-        "@type": "geocr:BandConfiguration",
-        "geocr:totalBands": 2,
-        "geocr:bandNamesList": [
-          "Band1",
-          "Band2"
-        ]
-      }
+      "sha256": "PLACEHOLDER-CHECKSUM-REQUIRED"
     },
     {
       "@type": "cr:FileObject",
@@ -117,11 +87,5 @@
       "encodingFormat": "text/csv",
       "sha256": "PLACEHOLDER-CHECKSUM-REQUIRED"
     }
-  ],
-  "geocr:spatialResolution": {
-    "@type": "QuantitativeValue",
-    "value": 30,
-    "unitText": "m"
-  },
-  "geocr:coordinateReferenceSystem": "Custom Albers Equal Area projection"
+  ]
 }

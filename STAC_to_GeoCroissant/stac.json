@@ -1,0 +1,130 @@
+{
+  "id": "boreal_agb_2020_202411261732637661_0038382",
+  "bbox": [111.821583637516, 72.7215138641646, 115.626213868067, 73.8622051330815],
+  "type": "Feature",
+  "links": [
+    {
+      "rel": "collection",
+      "type": "application/json",
+      "href": "https://stac.maap-project.org/collections/icesat2-boreal-v2.1-agb"
+    },
+    {
+      "rel": "parent",
+      "type": "application/json",
+      "href": "https://stac.maap-project.org/collections/icesat2-boreal-v2.1-agb"
+    },
+    {
+      "rel": "root",
+      "type": "application/json",
+      "href": "https://stac.maap-project.org/"
+    },
+    {
+      "rel": "self",
+      "type": "application/geo+json",
+      "href": "https://stac.maap-project.org/collections/icesat2-boreal-v2.1-agb/items/boreal_agb_2020_202411261732637661_0038382"
+    }
+  ],
+  "assets": {
+    "cog": {
+      "gsd": 30,
+      "href": "s3://nasa-maap-data-store/file-staging/nasa-map/icesat2-boreal-v2.1/agb/0038382/boreal_agb_2020_202411261732637661_0038382.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "bands": [
+        {
+          "scale": 1,
+          "nodata": "nan",
+          "offset": 0,
+          "sampling": "area",
+          "data_type": "float32",
+          "histogram": {
+            "max": 11.7898540496826,
+            "min": 0.43226882815361,
+            "count": 11,
+            "buckets": [6008354, 828317, 209341, 35552, 4804, 1381, 365, 78, 22, 10]
+          },
+          "statistics": {
+            "mean": 1.08501600683048,
+            "stddev": 0.630203517520534,
+            "maximum": 11.7898540496826,
+            "minimum": 0.43226882815361,
+            "valid_percent": 78.7580444444444
+          }
+        },
+        {
+          "scale": 1,
+          "nodata": "nan",
+          "offset": 0,
+          "sampling": "area",
+          "data_type": "float32",
+          "histogram": {
+            "max": 3.98806595802307,
+            "min": 0.0289899650961161,
+            "count": 11,
+            "buckets": [6502900, 510308, 63680, 8401, 1943, 636, 224, 83, 45, 4]
+          },
+          "statistics": {
+            "mean": 0.198167622806503,
+            "stddev": 0.164809003387679,
+            "maximum": 3.98806595802307,
+            "minimum": 0.0289899650961161,
+            "valid_percent": 78.7580444444444
+          }
+        }
+      ],
+      "roles": [
+        "data"
+      ],
+      "title": "Gridded predictions of aboveground biomass (Mg/ha)",
+      "description": "Gridded predictions of aboveground biomass (Mg/ha)",
+      "processing:level": "L4"
+    },
+    "training_data_csv": {
+      "href": "s3://nasa-maap-data-store/file-staging/nasa-map/icesat2-boreal-v2.1/agb/0038382/boreal_agb_2020_202411261732637661_0038382_train_data.csv",
+      "type": "text/csv",
+      "roles": [
+        "data"
+      ],
+      "title": "Tabular training data",
+      "description": "Tabular training data with latitude, longitude, and biomass observations"
+    }
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [114.090636608179, 72.7215138641646],
+        [115.626213868067, 73.3991878241219],
+        [113.313150849029, 73.8622051330815],
+        [111.821583637516, 73.1664496150928],
+        [114.090636608179, 72.7215138641646]
+      ]
+    ]
+  },
+  "collection": "icesat2-boreal-v2.1-agb",
+  "properties": {
+    "datetime": "2020-07-01T23:59:59.500000Z",
+    "proj:bbox": [-1881478, 4653304.00000001, -1791478, 4743304.00000001],
+    "proj:wkt2": "PROJCS[\"unnamed\",GEOGCS[\"GRS 1980(IUGG, 1980)\",DATUM[\"unknown\",SPHEROID[\"GRS80\",6378137,298.257222101],TOWGS84[0,0,0,0,0,0,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Albers_Conic_Equal_Area\"],PARAMETER[\"latitude_of_center\",40],PARAMETER[\"longitude_of_center\",180],PARAMETER[\"standard_parallel_1\",50],PARAMETER[\"standard_parallel_2\",70],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+    "proj:shape": [3000, 3000],
+    "end_datetime": "2020-12-31T23:59:59Z",
+    "proj:geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [-1881478, 4653304.00000001],
+          [-1791478, 4653304.00000001],
+          [-1791478, 4743304.00000001],
+          [-1881478, 4743304.00000001],
+          [-1881478, 4653304.00000001]
+        ]
+      ]
+    },
+    "proj:transform": [30, 0, -1881478, 0, -30, 4743304.00000001, 0, 0, 1],
+    "start_datetime": "2020-01-01T00:00:00Z",
+    "created_datetime": "2024-01-26T00:11:00+00:00"
+  },
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ]
+}

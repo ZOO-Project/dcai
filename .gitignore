@@ -1,4 +1,3 @@
-# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -19,40 +18,26 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
-# Virtual environments
 venv/
 ENV/
 env/
 .venv
-
-# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
-# OS
 .DS_Store
 Thumbs.db
-
-# Project specific
 outputs/*.png
 outputs/*.jpg
 outputs/*.tif
 !outputs/.gitkeep
-
-# Non-Quarto companion files (standalone scripts and data)
-*.py
-*.json
-
-# Quarto build outputs (deployed via gh-pages branch, not committed to main)
+# Quarto
 /.quarto/
 _book/
 docs/
 _freeze/
-
-# Jupyter
+site_libs/
 .ipynb_checkpoints/
 *.ipynb_checkpoints

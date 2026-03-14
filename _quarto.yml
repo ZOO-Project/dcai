@@ -29,7 +29,7 @@ book:
         - text: "Overview of GeoCroissant"
           file: geocroissant_overview.md
         - text: "Introduction to GeoCroissant"
-          file: "Introduction to Geocroissant/Introduction to Geocroissant.ipynb"
+          file: "Introduction_to_GeoCroissant/Introduction_to_GeoCroissant.ipynb"
     - part: "**Specification**"
       chapters:
         - text: "Background & Motivation"
@@ -43,39 +43,39 @@ book:
     - part: "**Catalog to GeoCroissant**"
       chapters:
         - text: "STAC to GeoCroissant"
-          file: "STAC to GeoCroissant/stac_to_geocroissant.ipynb"
+          file: "STAC_to_GeoCroissant/stac_to_geocroissant.ipynb"
         - text: "NASA UMM-G to GeoCroissant"
-          file: "NASA-UMM to GeoCroissant/NASA_UMM-G_to_GeoCroissant_Conversion.ipynb"
+          file: "NASA_UMM_to_GeoCroissant/NASA_UMM_G_to_GeoCroissant.ipynb"
         - text: "CEDA CMIP6 to GeoCroissant"
-          file: "CEDA UK to GeoCroissant Support/CEDA_UK to GeoCrossiant.ipynb"
+          file: "CEDA_UK_to_GeoCroissant_Support/CEDA_CMIP6_to_GeoCroissant.ipynb"
         - text: "Google Earth Engine to GeoCroissant"
-          file: "GEE to GeoCroissant/GEE to GeoCroissant.ipynb"
+          file: "GEE_to_GeoCroissant/GEE_to_GeoCroissant.ipynb"
     - part: "**Data Format to GeoCroissant**"
       chapters:
         - text: "GeoParquet to GeoCroissant"
-          file: "GeoParquet to GeoCroissant Support/GeoParquet to GeoCroissant Support.ipynb"
+          file: "GeoParquet_to_GeoCroissant_Support/GeoParquet_to_GeoCroissant.ipynb"
         - text: "HDF5 to GeoCroissant"
-          file: "HDF5 Support GeoCroissant/HDF5 to Geocroissant.ipynb"
+          file: "HDF5_Support_GeoCroissant/HDF5_to_GeoCroissant.ipynb"
         - text: "NetCDF to GeoCroissant"
-          file: "Solar Dynamics Observatory (NetCDF) to GeoCroissant/SDO-Geocroissant_NetCDF.ipynb"
+          file: "SDO_to_GeoCroissant_NetCDF/SDO-Geocroissant_NetCDF.ipynb"
         - text: "Zarr Datacube to GeoCroissant"
-          file: "Zarr-Datacube to GeoCroissant/Datacube(Zarr) to GeoCroissant.ipynb"
+          file: "Zarr_Datacube_to_GeoCroissant/Zarr_Datacube_to_GeoCroissant.ipynb"
     - part: "**GeoCroissant Extensions**"
       chapters:
         - text: "Time-Series Support"
-          file: "GeoCroissant Time-Series Support/geocr_time-series.ipynb"
+          file: "GeoCroissant_Time_Series_Support/geocr_time-series.ipynb"
         - text: "OGC-TDML to GeoCroissant"
-          file: "OGC-TDML to GeoCroissant Support/ogc-tdml to geocr/ogc-tdml to geocr_conversion.ipynb"
+          file: "OGC_TDML_to_GeoCroissant_Support/ogc_tdml_to_geocr/ogc_tdml_to_geocr_conversion.ipynb"
         - text: "GeoCroissant to OGC-TDML"
-          file: "OGC-TDML to GeoCroissant Support/geocr to ogc-tdml/geocr-to-ogc_tdm_conversion.ipynb"
+          file: "OGC_TDML_to_GeoCroissant_Support/geocr_to_ogc_tdml/geocr_to_ogc_tdml_conversion.ipynb"
     - part: "**GeoCroissant to Standards**"
       chapters:
         - text: "GeoCroissant to STAC"
-          file: "GeoCroissant to STAC/conversion-notebook.ipynb"
+          file: "GeoCroissant_to_STAC/conversion-notebook.ipynb"
         - text: "GeoCroissant to GeoDCAT"
-          file: "GeoCroissant to GeoDCAT/conversion-geodcat-notebook.ipynb"
+          file: "GeoCroissant_to_GeoDCAT/conversion-geodcat-notebook.ipynb"
     - references.qmd
-
+    
 execute:
   eval: false
   enabled: false

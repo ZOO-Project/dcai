@@ -5,26 +5,33 @@ format: html
 
 ## Authors
 
-::: {.grid}
-::: {.g-col-6}
-- Rajat Shinde
-- Manil Maskey
-- Ag Stephens
-- Harsh Shinde
-- Joseph Edgerton
-- Tejasri N
-- Douglas Fils
-:::
-::: {.g-col-6}
-- Edenna Chen
-- Claus Weiland
-- Pedram Ghamisi
-- Gerald Fenoy
-- Yuhan Douglas Rao
-- Omar Benjelloun
-- Elena Simperl
-:::
-:::
+**Rajat Shinde** : NASA Office of Data Science and Informatics, University of Alabama in Huntsville, US
+
+**Manil Maskey** : NASA, US
+
+**Ag Stephens** : STFC Centre for Environmental Data Analysis, UK
+
+**Harsh Shinde** : Individual Researcher, India
+
+**Joseph Edgerton** : University of Virginia, US
+
+**Tejasri N** : IIT Hyderabad, India
+
+**Douglas Fils** : San Diego Supercomputing Center, US
+
+**Edenna Chen** : Massachusetts Institute of Technology, US
+
+**Claus Weiland** : Senckenberg - Leibniz Institution for Biodiversity and Earth System Research, Germany
+
+**Pedram Ghamisi** : Helmholtz-Zentrum Dresden-Rossendorf (HZDR), Germany; Lancaster University, UK
+
+**Gerald Fenoy** : GeoLabs, France
+
+**Yuhan Douglas Rao** : National Oceanic and Atmospheric Administration, US
+
+**Omar Benjelloun** : Google, US
+
+**Elena Simperl** : King's College London & Open Data Institute, UK
 
 ## Overview
 

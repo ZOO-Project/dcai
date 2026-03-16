@@ -2,19 +2,23 @@ import json
 from datetime import datetime
 import xarray as xr
 import hashlib
+import pandas as pd
 
 
-def create_nasa_t2m_2020_croissant():
-    """Create GeoCroissant metadata for NASA T2M 2020 following TTL specifications."""
+def create_nasa_t2m_croissant():
+    """Create GeoCroissant metadata for NASA T2M following TTL specifications."""
     
     zarr_url = "https://nasa-power.s3.us-west-2.amazonaws.com/merra2/temporal/power_merra2_monthly_temporal_utc.zarr/"
     
     # Load dataset
     ds_full = xr.open_zarr(zarr_url)
-    ds_2020 = ds_full.sel(time=slice("2020-01-01", "2020-12-31"))
+    
+    # Get time bounds to make it universal
+    start_date = pd.to_datetime(ds_full.time.values[0]).strftime('%Y-%m-%d')
+    end_date = pd.to_datetime(ds_full.time.values[-1]).strftime('%Y-%m-%d')
     
     # Generate checksum
-    hash_input = f"{zarr_url}2020T2M".encode('utf-8')
+    hash_input = f"{zarr_url}T2M".encode('utf-8')
     checksum = hashlib.sha256(hash_input).hexdigest()
     
     # TTL-compliant GeoCroissant metadata
@@ -42,6 +46,7 @@ def create_nasa_t2m_2020_croissant():
                 "@id": "cr:dataType",
                 "@type": "@vocab"
             },
+            "equivalentProperty": "cr:equivalentProperty",
             "extract": "cr:extract",
             "field": "cr:field",
             "fileProperty": "cr:fileProperty",
@@ -67,16 +72,16 @@ def create_nasa_t2m_2020_croissant():
             "transform": "cr:transform"
         },
         "@type": "sc:Dataset",
-        "name": "NASA POWER T2M 2020",
-        "description": "Temperature at 2 Meters monthly data for 2020",
+        "name": "NASA POWER T2M",
+        "description": "Temperature at 2 Meters monthly data",
         "version": "1.0.0",
         "license": "CC-BY-4.0",
         "conformsTo": [
             "http://mlcommons.org/croissant/1.1",
             "http://mlcommons.org/croissant/geo/1.0"
         ],
-        "citeAs": "@dataset{nasa_power_t2m_2020, title={NASA POWER T2M 2020}, year={2020}, url={https://nasa-power.s3.us-west-2.amazonaws.com}}",
-        "datePublished": "2020-01-01",
+        "citeAs": "@dataset{nasa_power_t2m, title={NASA POWER T2M}, url={https://nasa-power.s3.us-west-2.amazonaws.com}}",
+        "datePublished": start_date,
         
         # Standard spatial coverage using schema.org
         "spatialCoverage": {
@@ -101,9 +106,9 @@ def create_nasa_t2m_2020_croissant():
         },
         
         # Temporal coverage
-        "temporalCoverage": "2020-01-01/2020-12-31",
+        "temporalCoverage": f"{start_date}/{end_date}",
         
-        "keywords": ["temperature", "climate", "nasa power", "t2m", "2020"],
+        "keywords": ["temperature", "climate", "nasa power", "t2m"],
         
         "distribution": [
             {
@@ -171,7 +176,7 @@ def create_nasa_t2m_2020_croissant():
     }
     
     # Save metadata
-    with open("NASA_T2M_2020_croissant.json", "w") as f:
+    with open("nasa_t2m_croissant.json", "w") as f:
         json.dump(croissant, f, indent=2)
     
     return croissant
@@ -179,4 +184,4 @@ def create_nasa_t2m_2020_croissant():
 
 # Execute
 if __name__ == "__main__":
-    croissant = create_nasa_t2m_2020_croissant()
+    croissant = create_nasa_t2m_croissant()

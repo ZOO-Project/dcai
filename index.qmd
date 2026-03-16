@@ -15,7 +15,7 @@ format: html
 
 **Joseph Edgerton** : University of Virginia, US
 
-**Tejasri N** : IIT Hyderabad, India
+**Dr. Tejasri Nampally** : IIT Hyderabad, India
 
 **Douglas Fils** : San Diego Supercomputing Center, US
 

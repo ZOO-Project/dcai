@@ -36,7 +36,7 @@ GeoCroissant datasets must declare conformance to both the Croissant and GeoCroi
 ## Authors
 
 ```
-Rajat Shinde, Manil Maskey, AG Stephens, Harsh Shinde, Joseph Edgerton, Tejasri N.,  
+Rajat Shinde, Manil Maskey, AG Stephens, Harsh Shinde, Joseph Edgerton, Dr. Tejasri Nampally.,  
 Douglas Fils, Edenna Chen, Claus Weiland, Pedram Ghamisi, Gerald Fenoy,  
 Yuhan Douglas Rao, Omar Benjelloun, and Elena Simperl
 ```
